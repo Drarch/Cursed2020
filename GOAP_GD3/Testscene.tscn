@@ -1,0 +1,138 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://white 2x2.png" type="Texture" id=1]
+[ext_resource path="res://Sprites/Rocks/Gray_Rock_Outline.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/Rocks/Breccia.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/Farm/Tree_2_Side.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/Plants/Hornworts.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/Farm/Shed_Iso.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/Farm/Shed_Iso_Shadow.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/Farm/Barn_Iso.png" type="Texture" id=8]
+[ext_resource path="res://Stockpile.gd" type="Script" id=9]
+[ext_resource path="res://Sprites/Farm/Barn_Iso_Shadow.png" type="Texture" id=10]
+[ext_resource path="res://ore.tscn" type="PackedScene" id=11]
+[ext_resource path="res://fonts/Bandwidth_13.tres" type="DynamicFont" id=12]
+[ext_resource path="res://Sprites/Resources/Wood.png" type="Texture" id=13]
+[ext_resource path="res://workers/axe.png" type="Texture" id=14]
+[ext_resource path="res://workers/pick.png" type="Texture" id=15]
+[ext_resource path="res://workers/Blacksmith.tscn" type="PackedScene" id=16]
+[ext_resource path="res://workers/Lumberjack.tscn" type="PackedScene" id=17]
+[ext_resource path="res://workers/Miner.tscn" type="PackedScene" id=18]
+
+[node name="Testscene" type="Node"]
+
+[node name="Background" type="TextureRect" parent="."]
+modulate = Color( 0.294118, 0.34902, 0.294118, 1 )
+margin_right = 1024.0
+margin_bottom = 600.0
+texture = ExtResource( 1 )
+expand = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Bigrock" type="Sprite" parent="."]
+position = Vector2( 145, 312 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+
+[node name="Pebbles" type="Sprite" parent="."]
+position = Vector2( 300, 430 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 3 )
+
+[node name="Tree" type="Sprite" parent="."]
+position = Vector2( 820, 440 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 4 )
+
+[node name="Bush" type="Sprite" parent="."]
+position = Vector2( 800, 220 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 5 )
+
+[node name="Smithy" type="Sprite" parent="."]
+editor/display_folded = true
+position = Vector2( 461, 87 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 6 )
+
+[node name="Sprite" type="Sprite" parent="Smithy"]
+modulate = Color( 0, 0, 0, 0.392157 )
+show_behind_parent = true
+position = Vector2( -10.5, 7.5 )
+texture = ExtResource( 7 )
+
+[node name="Stockpile" type="Sprite" parent="."]
+position = Vector2( 485, 284 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 8 )
+script = ExtResource( 9 )
+
+[node name="Shadow" type="Sprite" parent="Stockpile"]
+modulate = Color( 0, 0, 0, 0.392157 )
+show_behind_parent = true
+position = Vector2( -17.5, 10 )
+texture = ExtResource( 10 )
+
+[node name="ore" parent="Stockpile" instance=ExtResource( 11 )]
+
+[node name="wood" type="Label" parent="Stockpile"]
+editor/display_folded = true
+margin_left = 7.5
+margin_top = 19.0
+margin_right = 47.5
+margin_bottom = 54.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_fonts/font = ExtResource( 12 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "1
+"
+
+[node name="Sprite" type="Sprite" parent="Stockpile/wood"]
+position = Vector2( -7, 9 )
+texture = ExtResource( 13 )
+
+[node name="axes" type="Label" parent="Stockpile"]
+editor/display_folded = true
+margin_left = -7.5
+margin_top = 29.0
+margin_right = 32.5
+margin_bottom = 64.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_fonts/font = ExtResource( 12 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "1
+"
+
+[node name="Sprite" type="Sprite" parent="Stockpile/axes"]
+position = Vector2( -7, 9 )
+texture = ExtResource( 14 )
+
+[node name="picks" type="Label" parent="Stockpile"]
+editor/display_folded = true
+margin_left = 7.5
+margin_top = 29.0
+margin_right = 47.5
+margin_bottom = 64.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_fonts/font = ExtResource( 12 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "1
+"
+
+[node name="Sprite" type="Sprite" parent="Stockpile/picks"]
+position = Vector2( -7, 9 )
+texture = ExtResource( 15 )
+
+[node name="Blacksmith" parent="." instance=ExtResource( 16 )]
+position = Vector2( 469.156, 199.554 )
+
+[node name="Lumberjack" parent="." instance=ExtResource( 17 )]
+position = Vector2( 550, 310 )
+
+[node name="Miner" parent="." instance=ExtResource( 18 )]
+position = Vector2( 330.194, 313.573 )

@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://fonts/Bandwidth_13.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Sprites/Resources/Iron_ore.png" type="Texture" id=2]
+
+[node name="ore" type="Label"]
+editor/display_folded = true
+margin_left = -7.5
+margin_top = 19.0
+margin_right = 32.5
+margin_bottom = 54.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "1
+"
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( -7, 7 )
+texture = ExtResource( 2 )
