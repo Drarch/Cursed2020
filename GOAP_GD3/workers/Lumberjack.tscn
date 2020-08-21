@@ -1,0 +1,124 @@
+[gd_scene load_steps=21 format=2]
+
+[ext_resource path="res://Sprites/Peasant/Pesant.png" type="Texture" id=1]
+[ext_resource path="res://workers/Lumberjack.gd" type="Script" id=2]
+[ext_resource path="res://goap/goap_agent.tscn" type="PackedScene" id=3]
+[ext_resource path="res://workers/goap_lumberjack.gd" type="Script" id=4]
+[ext_resource path="res://goap/actions/a_checkPockets.tscn" type="PackedScene" id=5]
+[ext_resource path="res://goap/actions/a_checkTool.tscn" type="PackedScene" id=6]
+[ext_resource path="res://goap/actions/a_chopWood.tscn" type="PackedScene" id=7]
+[ext_resource path="res://goap/actions/a_deliverWood.tscn" type="PackedScene" id=8]
+[ext_resource path="res://goap/actions/a_gatherTwigs.tscn" type="PackedScene" id=9]
+[ext_resource path="res://goap/actions/a_getAxe.tscn" type="PackedScene" id=10]
+[ext_resource path="res://goap/actions/a_move_linear.tscn" type="PackedScene" id=11]
+[ext_resource path="res://goap/goals/g_deliverWood.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Sprites/Peasant/Pesant_cloths.png" type="Texture" id=13]
+[ext_resource path="res://workers/axe.png" type="Texture" id=14]
+[ext_resource path="res://fonts/Bandwidth_13.tres" type="DynamicFont" id=15]
+[ext_resource path="res://Sprites/Resources/Twig.png" type="Texture" id=16]
+[ext_resource path="res://Sprites/Resources/Wood.png" type="Texture" id=17]
+[ext_resource path="res://fonts/EXEPixelPerfect_16.tres" type="DynamicFont" id=18]
+[ext_resource path="res://workers/thoughts.gd" type="Script" id=19]
+
+[sub_resource type="Animation" id=1]
+resource_name = "run"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("cloths:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
+}
+
+[node name="Lumberjack" type="Sprite"]
+texture = ExtResource( 1 )
+hframes = 8
+script = ExtResource( 2 )
+
+[node name="GOAP_Agent" parent="." instance=ExtResource( 3 )]
+script = ExtResource( 4 )
+
+[node name="a_checkPockets" parent="GOAP_Agent/Actions" index="0" instance=ExtResource( 5 )]
+
+[node name="a_checkTool" parent="GOAP_Agent/Actions" index="1" instance=ExtResource( 6 )]
+
+[node name="a_chopWood" parent="GOAP_Agent/Actions" index="2" instance=ExtResource( 7 )]
+
+[node name="a_deliverWood" parent="GOAP_Agent/Actions" index="3" instance=ExtResource( 8 )]
+
+[node name="a_gatherTwigs" parent="GOAP_Agent/Actions" index="4" instance=ExtResource( 9 )]
+
+[node name="a_getAxe" parent="GOAP_Agent/Actions" index="5" instance=ExtResource( 10 )]
+
+[node name="a_move_linear" parent="GOAP_Agent/Actions" index="6" instance=ExtResource( 11 )]
+
+[node name="g_deliverWood" parent="GOAP_Agent/Goals" index="0" instance=ExtResource( 12 )]
+
+[node name="cloths" type="Sprite" parent="."]
+modulate = Color( 1, 0.509804, 0.509804, 1 )
+texture = ExtResource( 13 )
+hframes = 8
+
+[node name="axe" type="Sprite" parent="."]
+position = Vector2( 20, -10 )
+texture = ExtResource( 14 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "run"
+anims/run = SubResource( 1 )
+
+[node name="twigs" type="Label" parent="."]
+visible = false
+margin_left = 4.0
+margin_top = -37.0
+margin_right = 12.0
+margin_bottom = -21.0
+custom_fonts/font = ExtResource( 15 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "0"
+
+[node name="Sprite" type="Sprite" parent="twigs"]
+position = Vector2( -7, 8 )
+texture = ExtResource( 16 )
+
+[node name="wood" type="Sprite" parent="."]
+visible = false
+position = Vector2( 0.5, -28 )
+texture = ExtResource( 17 )
+
+[node name="Thoughts" type="Label" parent="."]
+margin_left = -90.0
+margin_top = -60.0
+margin_right = 90.0
+margin_bottom = -46.0
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 18 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+align = 1
+valign = 1
+autowrap = true
+script = ExtResource( 19 )
+
+[editable path="GOAP_Agent"]

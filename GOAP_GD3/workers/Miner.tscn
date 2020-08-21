@@ -1,0 +1,124 @@
+[gd_scene load_steps=21 format=2]
+
+[ext_resource path="res://Sprites/Peasant/Pesant.png" type="Texture" id=1]
+[ext_resource path="res://workers/Miner.gd" type="Script" id=2]
+[ext_resource path="res://goap/goap_agent.tscn" type="PackedScene" id=3]
+[ext_resource path="res://workers/goap_miner.gd" type="Script" id=4]
+[ext_resource path="res://goap/actions/a_checkPockets.tscn" type="PackedScene" id=5]
+[ext_resource path="res://goap/actions/a_checkTool.tscn" type="PackedScene" id=6]
+[ext_resource path="res://goap/actions/a_deliverOre.tscn" type="PackedScene" id=7]
+[ext_resource path="res://goap/actions/a_gatherOre.tscn" type="PackedScene" id=8]
+[ext_resource path="res://goap/actions/a_getPick.tscn" type="PackedScene" id=9]
+[ext_resource path="res://goap/actions/a_mineOre.tscn" type="PackedScene" id=10]
+[ext_resource path="res://goap/actions/a_move_linear.tscn" type="PackedScene" id=11]
+[ext_resource path="res://goap/goals/g_deliverOre.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Sprites/Peasant/Pesant_cloths.png" type="Texture" id=13]
+[ext_resource path="res://workers/pick.png" type="Texture" id=14]
+[ext_resource path="res://fonts/EXEPixelPerfect_16.tres" type="DynamicFont" id=15]
+[ext_resource path="res://workers/thoughts.gd" type="Script" id=16]
+[ext_resource path="res://Sprites/Resources/Silver_ore.png" type="Texture" id=17]
+[ext_resource path="res://fonts/Bandwidth_13.tres" type="DynamicFont" id=18]
+[ext_resource path="res://Sprites/Resources/Iron_ore.png" type="Texture" id=19]
+
+[sub_resource type="Animation" id=1]
+resource_name = "idle"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("cloths:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
+}
+
+[node name="Miner" type="Sprite"]
+texture = ExtResource( 1 )
+hframes = 8
+script = ExtResource( 2 )
+
+[node name="GOAP_Agent" parent="." instance=ExtResource( 3 )]
+script = ExtResource( 4 )
+
+[node name="a_checkPockets" parent="GOAP_Agent/Actions" index="0" instance=ExtResource( 5 )]
+
+[node name="a_checkTool" parent="GOAP_Agent/Actions" index="1" instance=ExtResource( 6 )]
+
+[node name="a_deliverOre" parent="GOAP_Agent/Actions" index="2" instance=ExtResource( 7 )]
+
+[node name="a_gatherOre" parent="GOAP_Agent/Actions" index="3" instance=ExtResource( 8 )]
+
+[node name="a_getPick" parent="GOAP_Agent/Actions" index="4" instance=ExtResource( 9 )]
+
+[node name="a_mineOre" parent="GOAP_Agent/Actions" index="5" instance=ExtResource( 10 )]
+
+[node name="a_move_linear" parent="GOAP_Agent/Actions" index="6" instance=ExtResource( 11 )]
+
+[node name="g_deliverOre" parent="GOAP_Agent/Goals" index="0" instance=ExtResource( 12 )]
+
+[node name="cloths" type="Sprite" parent="."]
+modulate = Color( 0.313726, 0.313726, 0.313726, 1 )
+texture = ExtResource( 13 )
+hframes = 8
+
+[node name="pick" type="Sprite" parent="."]
+visible = false
+position = Vector2( 20, -10 )
+texture = ExtResource( 14 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "idle"
+anims/idle = SubResource( 1 )
+
+[node name="Thoughts" type="Label" parent="."]
+margin_left = -90.0
+margin_top = -60.0
+margin_right = 90.0
+margin_bottom = -47.0
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 15 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+align = 1
+valign = 1
+autowrap = true
+script = ExtResource( 16 )
+
+[node name="ore_block" type="Sprite" parent="."]
+visible = false
+position = Vector2( 0, -30 )
+texture = ExtResource( 17 )
+
+[node name="orechunks" type="Label" parent="."]
+visible = false
+margin_left = 4.0
+margin_top = -37.0
+margin_right = 12.0
+margin_bottom = -2.0
+custom_fonts/font = ExtResource( 18 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "0"
+
+[node name="Sprite" type="Sprite" parent="orechunks"]
+position = Vector2( -7, 7 )
+texture = ExtResource( 19 )
+
+[editable path="GOAP_Agent"]

@@ -1,0 +1,34 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path="res://.import/Gray_Rock_Outline.png-f0ec0d95cf1acf24aeb7fad7b52108f7.stex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://Sprites/Rocks/Gray_Rock_Outline.png"
+dest_files=[ "res://.import/Gray_Rock_Outline.png-f0ec0d95cf1acf24aeb7fad7b52108f7.stex" ]
+
+[params]
+
+compress/mode=0
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/bptc_ldr=0
+compress/normal_map=0
+flags/repeat=0
+flags/filter=false
+flags/mipmaps=false
+flags/anisotropic=false
+flags/srgb=2
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+process/invert_color=false
+stream=false
+size_limit=0
+detect_3d=true
+svg/scale=1.0

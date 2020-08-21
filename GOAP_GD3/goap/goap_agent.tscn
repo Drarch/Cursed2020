@@ -1,0 +1,7 @@
+[gd_scene format=2]
+
+[node name="GOAP_Agent" type="Node"]
+
+[node name="Actions" type="Node" parent="."]
+
+[node name="Goals" type="Node" parent="."]
