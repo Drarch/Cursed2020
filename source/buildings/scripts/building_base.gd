@@ -58,6 +58,9 @@ func randView() -> void:
 		roof.frame = randi() % ROOF_DIRECTIONS.size()
 
 func destroy():
+	if get_child_count() == 0:
+		return
+	
 	if roof:
 		get_child(get_child_count() - 1).free()
 		
