@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://arkanoid/paddle_02.png" type="Texture" id=1]
 [ext_resource path="res://arkanoid/arkanoid_scene.gd" type="Script" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://arkanoid/Mission Plausible.ogg" type="AudioStream" id=6]
 [ext_resource path="res://arkanoid/quote1.wav" type="AudioStream" id=7]
 [ext_resource path="res://resources/Kenney Future.ttf" type="DynamicFontData" id=8]
+[ext_resource path="res://arkanoid/pattern65.png" type="Texture" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 320, 16 )
@@ -67,6 +68,24 @@ anim_speed_random = 1.0
 anim_offset = 1.0
 anim_offset_random = 1.0
 
+[sub_resource type="Shader" id=16]
+code = "shader_type canvas_item;
+
+void fragment() {
+	vec2 coord = SCREEN_UV;
+	coord.x = mod(coord.x + sin(UV.y * 10.0 + TIME) * 0.1, 1.0);
+	
+	vec4 color = textureLod(SCREEN_TEXTURE, coord, 0.1);
+	color.r *= 0.8;
+	color.g = color.g * 0.5 + abs(sin(TIME * 4.0)) * 0.5;
+	color.b *= 0.6;
+	COLOR = color;
+}"
+custom_defines = ""
+
+[sub_resource type="ShaderMaterial" id=17]
+shader = SubResource( 16 )
+
 [sub_resource type="DynamicFont" id=14]
 size = 50
 outline_size = 10
@@ -112,6 +131,13 @@ tracks/2/keys = {
 "update": 1,
 "values": [ true, false ]
 }
+
+[sub_resource type="GDScript" id=18]
+script/source = "extends Sprite
+
+func _process(delta: float) -> void:
+	region_rect.position += Vector2.ONE * 100 * delta
+"
 
 [node name="Arkanoid" type="Node2D"]
 script = ExtResource( 2 )
@@ -230,6 +256,14 @@ bus = "Music"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = SubResource( 17 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Label" type="Label" parent="CanvasLayer"]
 anchor_left = 0.5
 anchor_top = 0.5
@@ -251,6 +285,14 @@ __meta__ = {
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer"]
 playback_speed = 8.0
 anims/POWERUP = SubResource( 15 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 339.411, 67.8823 )
+z_index = -1000
+texture = ExtResource( 10 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 10000, 10000 )
+script = SubResource( 18 )
 [connection signal="hit" from="Ball" to="." method="_on_Ball_hit"]
 [connection signal="hit2" from="Ball" to="." method="_on_Ball_hit2"]
 [connection signal="body_entered" from="Dead" to="." method="_on_Dead_body_entered"]

@@ -25,7 +25,13 @@ func _ready() -> void:
 	pass
 
 func increase():
+	if get_child_count() < 2:
+		return
+	
 	var sprite := get_child(get_child_count() - 2).duplicate() as Sprite
+	if not sprite or not roof:
+		return
+	
 	sprite.position.y -= 33
 	add_child(sprite)
 	

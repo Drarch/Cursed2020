@@ -11,9 +11,9 @@ var id
 var up
 
 func _ready() -> void:
-	id = randi() % 3
+	id = randi() % 9
 	modulate.s = 1
-	modulate.h = id * 0.1
+	modulate.h = fmod(id * 0.1, 1)
 
 func _physics_process(delta: float) -> void:
 	position += up * 600 * delta

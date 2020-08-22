@@ -1,5 +1,9 @@
 extends Node2D
 
+##todo wynik
+
+const POWER_UP_NOCHANCE = 10
+
 onready var paddle := $Paddle as Node2D
 onready var ball := $Ball as KinematicBody2D
 onready var line := $PaddleLine as Line2D
@@ -7,10 +11,14 @@ onready var particles := $Particles2D
 onready var label := $CanvasLayer/Label
 onready var ap := $CanvasLayer/AnimationPlayer as AnimationPlayer
 
+onready var mushrooms_node := $CanvasLayer/ColorRect
+
 var camera: Camera2D
 var shake: int
 var tilemap: TileMap
 var city
+
+var mushrooms: float
 
 func _ready() -> void:
 	ball.hide()
@@ -49,6 +57,9 @@ func _process(delta: float) -> void:
 		shake -= 1
 	else:
 		camera.offset = Vector2()
+	
+	mushrooms -= delta
+	mushrooms_node.visible = mushrooms > 0
 
 func up() -> Vector2:
 	return Vector2.UP.rotated(paddle.rotation)
@@ -71,7 +82,7 @@ func _on_Ball_hit() -> void:
 				partcl(city.buildings_data[cell].global_position)
 				city.buildings_data[cell].destroy()
 	
-	if randi() % 20 == 0:
+	if randi() % POWER_UP_NOCHANCE == 0:
 		var powerup := preload("res://arkanoid/powerup.tscn").instance()
 		powerup.position = ball.position
 		powerup.up = -up()
@@ -103,7 +114,7 @@ func play_sample(sample):
 
 func powerup(id):
 	play_sample("res://arkanoid/level_up.wav")
-#	id = 2
+#	id = 4
 	
 	match id:
 		0:
@@ -115,5 +126,32 @@ func powerup(id):
 		2:
 			ball.explosion += 1
 			label.text = "EXPLOSION UP"
+		3:
+			for cell in city.buildings_data:
+				if city.buildings_data[cell]:
+					city.buildings_data[cell].increase()
+			label.text = "CITY UP"
+		4:
+			label.text = "MUSHROOM UP"
+			mushrooms = max(mushrooms + 5, 5)
+		5:
+			label.text = "CREEPS UP"##TODO
+		6:
+			ball.speed += 2000
+			label.text = "HYPER UP"
+			get_tree().create_timer(5).connect("timeout", self, "dehyper")
+		7:
+			paddle.scale.x = 10
+			label.text = "PADDLE UP"
+			get_tree().create_timer(5).connect("timeout", self, "depaddle")
+		8:
+			$AudioStreamPlayer.pitch_scale += 0.1
+			label.text = "MUSIC UP"
 
 	ap.play("POWERUP")
+
+func dehyper():
+	ball.speed -= 2000
+
+func depaddle():
+	paddle.scale.x = 1
