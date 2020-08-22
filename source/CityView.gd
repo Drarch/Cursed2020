@@ -11,6 +11,7 @@ var drag_camera: Vector2
 var buildings_data: Dictionary
 
 func _ready() -> void:
+	Globals.cityView = self
 	Globals.navigation = navigation
 
 func _process(delta: float) -> void:
@@ -31,12 +32,9 @@ func _process(delta: float) -> void:
 	
 	construct()
 
-func construct():
-	var cells := tilemap.get_used_cells()
-	var cell := cells[randi() % cells.size()] as Vector2
-	while tilemap.get_cellv(cell) != 2:
-		cell = cells[randi() % cells.size()]
-	
+func construct():	
+	var cell = randomTile()
+
 	if not cell in buildings_data:
 		var direction := randi() % 4
 		if tilemap.get_cellv(cell + Vector2.DOWN) == 0:
@@ -69,3 +67,12 @@ func _input(event: InputEvent) -> void:
 				drag_camera = camera.position
 			else:
 				drag = Vector2()
+
+
+func randomTile() -> Vector2:
+	var cells := tilemap.get_used_cells()
+	var cell := cells[randi() % cells.size()] as Vector2
+	while tilemap.get_cellv(cell) != 2:
+		cell = cells[randi() % cells.size()]
+
+	return cell

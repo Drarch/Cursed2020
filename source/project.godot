@@ -21,6 +21,7 @@ config/icon="res://icon.png"
 
 [autoload]
 
+DS="*res://goap/datastructures.gd"
 GOAP_CACHE="*res://goap/goap_cache.gd"
 Globals="*res://globals.gd"
 
