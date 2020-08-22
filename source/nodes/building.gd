@@ -9,9 +9,6 @@ onready var roof := $Roof as Sprite
 var direction: int
 
 func _ready() -> void:
-	randomize()
-	direction = randi() % 4
-	
 	var frool := randi() % FLOOR_DIRECTIONS.size()
 	while FLOOR_DIRECTIONS[frool] != direction:
 		frool = randi() % FLOOR_DIRECTIONS.size()
