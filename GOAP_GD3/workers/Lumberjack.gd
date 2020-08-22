@@ -21,23 +21,20 @@ func update_inventory():
 	if twigs>0:
 		$twigs.text = str(twigs)
 		$twigs.visible = true
-		$wood.visible = false
 		
 	if (hasWood):
-		$wood.visible = true
 		$twigs.visible = false
-	
+		
+	$wood.visible = hasWood
 	$axe.visible = !(!hasAxe)
 
 func _draw():
-	print("lumber dude")
 	if twigs>0:
 		$twigs.text = str(twigs)
 		$twigs.visible = true
-		$wood.visible = false
 		
 	if (hasWood):
-		$wood.visible = true
 		$twigs.visible = false
-	
+		
+	$wood.visible = hasWood
 	$axe.visible = !(!hasAxe)

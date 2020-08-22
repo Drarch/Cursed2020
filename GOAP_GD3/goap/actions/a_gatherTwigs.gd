@@ -24,8 +24,7 @@ func evaluate():
 	# Planner calls this after resetting the action
 	# If returning true, the planner will consider this action for its current plan
 	# If returning false, the planner will not include this action in the plan for the currently inspected goal at all!
-	if (entity.hasWood): return false
-	return true
+	return !entity.hasWood
 
 func get_cost():
 	# Called when the planner wants to calculate the next best action
@@ -52,4 +51,8 @@ func execute():
 	
 	entity.add_twig()
 	entity.update_inventory()
-	return ABORTED
+	
+	if entity.hasWood:
+		return COMPLETED
+	else:
+		return CONTINUED

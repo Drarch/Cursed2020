@@ -2,7 +2,7 @@ extends "res://goap/goap_action.gd"
 
 func setup():
 	# Called after setup_common()
-	cost = 1.0 # Higher cost actions are considered less preferable over lower cost actions when planning
+	cost = 0.1 # Higher cost actions are considered less preferable over lower cost actions when planning
 	name = "a_checkPockets" # String identifier of this action. setup_common() will make sure the action's node is named after this
 	type = TYPE_NORMAL # See ancestor script for type descriptions
 	# Movement - use add_movement(string id)
@@ -10,10 +10,11 @@ func setup():
 	# Preconditions - use add_precondition(string symbol, bool value)
 	
 	# Effects - use add_effect(string symbol, bool value)
-	add_effect("s_hasOre", true)
-	add_effect("s_hasWood", true)
-	add_effect("s_hasPick", true)
-	add_effect("s_hasAxe", true)
+	# add_effect("s_hasOre", true)
+	# add_effect("s_hasWood", true)
+	# add_effect("s_hasFish", true)
+	# add_effect("s_hasPick", true)
+	# add_effect("s_hasAxe", true)
 	return
 
 func reset():
@@ -27,13 +28,17 @@ func evaluate():
 	# If returning false, the planner will not include this action in the plan for the currently inspected goal at all!
 	
 	# These filthy string compares check for the entity's type, because 'Miner' does not have 'hasWood' and would throw a fat error if we checked against it
-	if (entity.get_name() == "Miner"):
-		if (entity.hasOre): return true
-	
-	if (entity.get_name() == "Lumberjack"):
-		if (entity.hasWood): return true
-	
-	return false
+	var  result: bool = false
+
+	match entity.get_name():
+		"Miner":
+			result = entity.hasOre
+		"Lumberjack":
+			result = entity.hasWood
+		"Fisherman":
+			result = entity.hasFish
+			
+	return result
 
 func get_cost():
 	# Called when the planner wants to calculate the next best action
