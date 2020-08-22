@@ -10,6 +10,8 @@ var pointCurrent = null
 
 var moving: bool = false
 
+var velocity := Vector2.ZERO
+
 func setup():
 	# Called after setup_common()
 	cost = 1.0 # Higher cost actions are considered less preferable over lower cost actions when planning
@@ -97,13 +99,15 @@ func _process(delta):
 	# 	entity.set_global_position(Vector2(xx, yy))
 
 	if pointStart && !path.empty():
-		# player.position += player.position.direction_to(points.front()) * 400 * delta
+
+#		player.position += player.position.direction_to(points.front()) * entity.movementspeed * delta
 		pointCurrent = path.front()
-
-		var xx = lerp(pointStart.x, pointCurrent.x, min(1.0, entity.movementspeed * delta / max(pointStart.distance_to(pointCurrent),1)))
-		var yy = lerp(pointStart.y, pointCurrent.y, min(1.0, entity.movementspeed * delta / max(pointStart.distance_to(pointCurrent),1)))
-
-		entity.set_global_position(Vector2(xx, yy))
+#
+#		var xx = lerp(pointStart.x, pointCurrent.x, min(1.0, entity.movementspeed * delta / max(pointStart.distance_to(pointCurrent),1)))
+#		var yy = lerp(pointStart.y, pointCurrent.y, min(1.0, entity.movementspeed * delta / max(pointStart.distance_to(pointCurrent),1)))
+		velocity += entity.global_position.direction_to(pointCurrent) * entity.movementspeed * delta
+		velocity *= 0.95
+		entity.global_position += velocity
 		
 		if entity.position.distance_squared_to(pointCurrent) < 1000:
 			path.pop_front()

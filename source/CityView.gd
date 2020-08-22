@@ -66,7 +66,8 @@ func construct(building: BuildingBase) -> void:
 
 func constructExistingBuildings() -> void:
 	for b in buildings.get_children():
-		construct(b)
+		if b is BuildingBase:
+			construct(b)
 
 
 func _input(event: InputEvent) -> void:
