@@ -1,6 +1,8 @@
 extends Node2D
 class_name BuildingBase
 
+enum WorkerType { UNEMPOLYED, CARGO }
+
 const FLOOR_DIRECTIONS := [0, 1, 0, 1, 2, 3, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0 , 1, 0, 1, 0, 1, 0, 1, 2, 3, 0, 0, 1, 3, 2, 2, 3, 0, 1, 2, 3, 0, 1, 0, 0, 1, 1, 0, 1]
 const WALL_DIRECTIONS := [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, -1, -1, -1, -1, -1, -1, -1, -1]
 const ROOF_DIRECTIONS := [-1, -1, -1, -1, 0, 1, 3, 2,0, 1, 3, 2, 0, 1, 3, 2, 0 , 1, 3, 2, 0, 1, 3, 2, 0, 1, 3, 2, 0, 1, 3, 2, 0, 1, 3, 2, 0, 1,3, 2, 0, -1, -1, -1, -1, -1, -1, -1]
@@ -12,6 +14,7 @@ var direction: int
 export(int, 0, 20) var maxEmployers: int = 0
 export(int, 0, 20) var maxCargo: int = 0
 
+export(WorkerType) var employerType: int = WorkerType.UNEMPOLYED
 var employers: Array = []
 var cargo: Array = []
 
@@ -60,15 +63,42 @@ func destroy():
 		queue_free()
 
 func updateWorkplace() -> void:
-	if (maxCargo + maxEmployers) >= (cargo.size() + employers.size()):
+	if canGetJob():
 		Globals.addWorkplace(self)
 	else:
 		Globals.removeWorkplace(self)
 
 
+func canGetJob():
+	return (maxCargo + maxEmployers) > (cargo.size() + employers.size())
+
+func generateWorker():
+	var type: int = getJob()
+
+	var worker = spawnWorker(type)
+	worker.position = self.position
+
+	if worker:
+		if type == WorkerType.CARGO:
+			hireCargo(worker)
+		else:
+			hireEmploye(worker)
+
+
+
+
+func getJob() -> int:
+	if employers.size() < maxEmployers:
+		return employerType
+	else:
+		return WorkerType.CARGO
+
+
+
 func hireCargo(entity: Node2D) -> bool:
 	if cargo.size() < maxCargo:
 		cargo.append(entity)
+		entity.workplace = self
 		updateWorkplace()
 		return true
 
@@ -77,12 +107,14 @@ func hireCargo(entity: Node2D) -> bool:
 func fireCargo(entity: Node2D) -> void:
 	if cargo.size() > 0:
 		cargo.erase(entity)
+		entity.workplace = null
 		updateWorkplace()
 
 
 func hireEmploye(entity: Node2D) -> bool:
 	if employers.size() < maxEmployers:
 		employers.append(entity)
+		entity.workplace = self
 		updateWorkplace()
 		return true
 
@@ -91,4 +123,20 @@ func hireEmploye(entity: Node2D) -> bool:
 func fireEmploye(entity: Node2D) -> void:
 	if employers.size() > 0:
 		employers.erase(entity)
+		entity.workplace = null
 		updateWorkplace()
+
+
+func spawnWorker(workerType: int) -> Node2D:
+	var worker: Node2D = null
+	
+	match workerType:
+		WorkerType.UNEMPOLYED:
+			worker = preload("res://workers/worker_unemployed.tscn").instance() as Node2D
+		WorkerType.CARGO:
+			worker = preload("res://workers/worker_cargo.tscn").instance() as Node2D
+
+	if worker:
+		self.get_parent().add_child(worker)
+
+	return worker
