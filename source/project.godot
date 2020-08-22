@@ -36,6 +36,10 @@ DS="*res://goap/datastructures.gd"
 GOAP_CACHE="*res://goap/goap_cache.gd"
 Globals="*res://globals.gd"
 
+[debug]
+
+gdscript/warnings/enable=false
+
 [display]
 
 window/dpi/allow_hidpi=true

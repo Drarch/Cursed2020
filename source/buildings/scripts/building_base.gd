@@ -45,3 +45,8 @@ func randView() -> void:
 	roof.frame = randi() % ROOF_DIRECTIONS.size()
 	while ROOF_DIRECTIONS[roof.frame] != -1 and ROOF_DIRECTIONS[roof.frame] != direction:
 		roof.frame = randi() % ROOF_DIRECTIONS.size()
+
+func destroy():
+	get_child(get_child_count() - 1).free()
+	if get_child_count() == 0:
+		queue_free()
