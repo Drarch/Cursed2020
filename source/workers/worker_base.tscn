@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://goap/goap_agent.tscn" type="PackedScene" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
+
+[node name="Worker" type="Node2D"]
+
+[node name="View" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
+[node name="GOAP_Agent" parent="." instance=ExtResource( 1 )]
+
+[editable path="GOAP_Agent"]
