@@ -30,9 +30,8 @@ func _process(delta: float) -> void:
 	if drag:
 		camera.position = drag_camera + (drag - screen_center.get_local_mouse_position()) * camera.zoom
 	
-	construct()
 
-func construct():	
+func construct():
 	var cell = randomTile()
 
 	if not cell in buildings_data:
