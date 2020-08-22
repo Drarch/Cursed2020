@@ -22,7 +22,7 @@ func setup():
 	debug_show_call_generate_goalqueue = false
 	debug_show_call_generate_plan = false
 	debug_show_call_interval = false
-	debug_show_call_plan = true
+	debug_show_call_plan = false
 	debug_show_call_setup_common = false
 
 	return

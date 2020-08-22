@@ -69,6 +69,7 @@ func execute():
 		moving = true
 		pointEnd = agent.actions_current[1].get_target_location()
 		_calculatePath(pointEnd)
+		pointEnd = path.back()
 	
 
 	if (pointEnd == null):
@@ -110,4 +111,4 @@ func _process(delta):
 
 
 func _calculatePath(destination: Vector2) -> void:
-	path = Globals.navigation.get_simple_path(entity.position, destination)
+	path = Globals.navigation.get_simple_path(entity.position, destination, false)
