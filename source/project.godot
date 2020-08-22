@@ -18,10 +18,16 @@ _global_script_classes=[ {
 "class": "TweenSequence",
 "language": "GDScript",
 "path": "res://TweenSequence.gd"
+}, {
+"base": "Node2D",
+"class": "WorkerBase",
+"language": "GDScript",
+"path": "res://workers/scripts/worker_base.gd"
 } ]
 _global_script_class_icons={
 "BuildingBase": "",
-"TweenSequence": ""
+"TweenSequence": "",
+"WorkerBase": ""
 }
 
 [application]

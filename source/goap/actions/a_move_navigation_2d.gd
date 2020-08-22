@@ -91,6 +91,10 @@ func execute():
 
 func _process(delta):
 	# Move closer to target
+	if !entity:
+		set_process(false)
+		return
+
 	pointStart = entity.get_global_position()
 
 	# if pointStart && pointEnd:

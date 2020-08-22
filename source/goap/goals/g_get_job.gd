@@ -6,12 +6,12 @@ func setup():
 	
 	# Called after setup_common()
 	
-	name = "g_idle_walking" # String to identify the goal from others after creation
-	priority = 0.1 # The higher this number, the more important the goal. Agent will always want to fulfill the goal with the highest priority first
-	type = TYPE_IDLE # Defines goal type. Definitions of enums are found in ancestor script
+	name = "g_getJob" # String to identify the goal from others after creation
+	priority = 1.0 # The higher this number, the more important the goal. Agent will always want to fulfill the goal with the highest priority first
+	type = TYPE_NORMAL # Defines goal type. Definitions of enums are found in ancestor script
 	
 	# Define symbols by adding them to goals list with add_symbol(string symbol, bool value)
-	add_symbol("s_idling", true)
+	add_symbol("s_hasJob", true)
 
 	return
 
@@ -23,9 +23,8 @@ func evaluate():
 	# If one symbol is not fulfilled, this goal may be used in planning
 	# Returns a dictionary of all of goal's symbols in worldstate if any is not satisfied, otherwise null
 	var dic = {
-		"s_idling": false
+		"s_hasJob": entity.hasJob()
 	}
-
 
 	return dic
 

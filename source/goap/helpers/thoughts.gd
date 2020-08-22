@@ -3,7 +3,8 @@ extends Label
 var timer := 0.0
 var timeout := 3.0
 func _ready():
-	text = "Hello World"
+	# text = "Hello World"
+	pass
 
 func _process( delta:float ):
 	if timer < timeout:

@@ -3,8 +3,10 @@ extends Node2D
 onready var paddle := $Paddle as Node2D
 onready var ball := $Ball as KinematicBody2D
 onready var line := $PaddleLine as Line2D
+onready var particles := $Particles2D
 
 var camera: Camera2D
+var shake: int
 
 func _ready() -> void:
 	ball.hide()
@@ -14,6 +16,7 @@ func _ready() -> void:
 			$City.constructRandom()
 	
 	$City/Timer.queue_free()
+	$City/AudioStreamPlayer.queue_free()
 	$City.set_process(false)
 	$City.set_process_input(false)
 	
@@ -32,9 +35,40 @@ func start():
 
 func _process(delta: float) -> void:
 	paddle.global_position = line.to_global(line.get_local_mouse_position().project(line.points[1]))
+	if shake:
+		camera.offset = Vector2(rand_range(-shake, shake), rand_range(-shake, shake))
+		shake -= 1
+	else:
+		camera.offset = Vector2()
 
 func up() -> Vector2:
 	return Vector2.UP.rotated(paddle.rotation)
 
 func _on_Dead_body_entered(body: Node) -> void:
 	ball.position = paddle.position + up() * 50
+	if ball.started:
+		play_sample("res://arkanoid/call_for_backup.wav")
+
+func _on_Ball_hit() -> void:
+	var p = particles.duplicate() as Particles2D
+	add_child(p)
+	p.position = ball.position
+	p.emitting = true
+	get_tree().create_timer(1.5).connect("timeout", p, "queue_free")
+	shake = 20
+	
+	var stream = play_sample(str("res://arkanoid/impactPlate_heavy_00",randi() % 5 , ".wav"))
+	stream.volume_db = 5 + randi() % 6
+
+func _on_Ball_hit2() -> void:
+	var stream = play_sample(str("res://arkanoid/impactMetal_heavy_00",randi() % 5 , ".wav"))
+	stream.volume_db = 5 + randi() % 6
+
+func play_sample(sample):
+	var stream := AudioStreamPlayer.new()
+	stream.stream = AudioStreamRandomPitch.new()
+	stream.stream.audio_stream = load(sample)
+	stream.autoplay = true
+	stream.connect("finished", stream, "queue_free")
+	add_child(stream)
+	return stream

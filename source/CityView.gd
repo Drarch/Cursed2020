@@ -49,6 +49,7 @@ func constructRandom():
 		var building := preload("res://buildings/building_base.tscn").instance() as Node2D
 		building.direction = direction
 		building.randView()
+		buildings.add_child(building)
 
 		constructOnCell(building, cell)
 	else:
@@ -56,7 +57,6 @@ func constructRandom():
 
 func constructOnCell(building: BuildingBase, cell: Vector2) -> void:
 	building.position = tilemap.map_to_world(cell) + Vector2(0, 34)
-	buildings.add_child(building)
 	buildings_data[cell] = building
 
 func construct(building: BuildingBase) -> void:
