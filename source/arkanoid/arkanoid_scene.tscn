@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://arkanoid/arkanoid_scene.gd" type="Script" id=2]
 [ext_resource path="res://icon.png" type="Texture" id=3]
@@ -29,6 +29,15 @@ shader = SubResource( 3 )
 
 [sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 5, 1785.72 )
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 5, 6606.07 )
+
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 672.825, 1785.72 )
+
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 4793.78, 3162.79 )
 
 [node name="Arkanoid" type="Node2D"]
 script = ExtResource( 2 )
@@ -83,9 +92,45 @@ rotation = 1.1069
 shape = SubResource( 6 )
 
 [node name="Dead" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="Dead"]
 position = Vector2( -1795.24, 2269.22 )
 rotation = -1.10541
-shape = SubResource( 6 )
+shape = SubResource( 7 )
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="Dead"]
+position = Vector2( 2886.2, 2841.55 )
+rotation = -2.21701
+shape = SubResource( 8 )
+
+[node name="CollisionShape2D10" type="CollisionShape2D" parent="Dead"]
+position = Vector2( 7457.92, 4162.27 )
+rotation = 2.25939
+shape = SubResource( 9 )
+
+[node name="CollisionShape2D11" type="CollisionShape2D" parent="Dead"]
+position = Vector2( -5673.06, -4346.2 )
+rotation = 2.25939
+shape = SubResource( 9 )
+
+[node name="CollisionShape2D12" type="CollisionShape2D" parent="Dead"]
+position = Vector2( 4009.82, -4117.62 )
+rotation = -2.5076
+shape = SubResource( 9 )
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="Dead"]
+position = Vector2( 3186.61, 667.387 )
+rotation = -3.91279
+shape = SubResource( 8 )
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="Dead"]
+position = Vector2( 113.792, -722.236 )
+rotation = 1.52484
+shape = SubResource( 8 )
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="Dead"]
+position = Vector2( -3209.3, 175.143 )
+rotation = -5.0183
+shape = SubResource( 8 )
 [connection signal="body_entered" from="Dead" to="." method="_on_Dead_body_entered"]
