@@ -76,3 +76,8 @@ func randomTile() -> Vector2:
 		cell = cells[randi() % cells.size()]
 
 	return cell
+
+func randomTileGlobal() -> Vector2:
+	var cell = randomTile()
+
+	return tilemap.map_to_world(cell)
