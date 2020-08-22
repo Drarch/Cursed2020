@@ -10,15 +10,3 @@ script = ExtResource( 2 )
 __meta__ = {
 "_editor_description_": ""
 }
-
-[node name="Label" type="Label" parent="."]
-margin_left = -29.0
-margin_top = -28.0
-margin_right = 28.0
-margin_bottom = -14.0
-text = "direction"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
