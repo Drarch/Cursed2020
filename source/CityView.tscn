@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://resources/Road.tres" type="TileSet" id=1]
 [ext_resource path="res://CityView.gd" type="Script" id=2]
+[ext_resource path="res://buildings/building_storage_main.tscn" type="PackedScene" id=3]
 
 [node name="City" type="Node2D"]
 script = ExtResource( 2 )
@@ -26,6 +27,8 @@ position = Vector2( 512, 300 )
 
 [node name="Buildings" type="YSort" parent="."]
 
+[node name="StorageMain" parent="Buildings" instance=ExtResource( 3 )]
+position = Vector2( -327.838, 1544.53 )
+
 [node name="Timer" type="Timer" parent="."]
-autostart = true
-[connection signal="timeout" from="Timer" to="." method="construct"]
+[connection signal="timeout" from="Timer" to="." method="constructRandom"]

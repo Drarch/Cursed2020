@@ -14,6 +14,8 @@ func _ready() -> void:
 	Globals.cityView = self
 	Globals.navigation = navigation
 
+	constructExistingBuildings()
+
 func _process(delta: float) -> void:
 	var screen_size := get_viewport().size
 	screen_center.position = screen_size * 0.5
@@ -31,7 +33,7 @@ func _process(delta: float) -> void:
 		camera.position = drag_camera + (drag - screen_center.get_local_mouse_position()) * camera.zoom
 
 
-func construct():	
+func constructRandom():	
 	var cell = randomTile()
 
 	if not cell in buildings_data:
@@ -47,12 +49,25 @@ func construct():
 		
 		var building := preload("res://buildings/building_base.tscn").instance() as Node2D
 		building.direction = direction
-		building.position = tilemap.map_to_world(cell) + Vector2(-1, 34)
 		building.randView()
-		buildings.add_child(building)
-		buildings_data[cell] = building
+
+		constructOnCell(building, cell)
 	else:
 		buildings_data[cell].increase()
+
+func constructOnCell(building: BuildingBase, cell: Vector2) -> void:
+	building.position = tilemap.map_to_world(cell) + Vector2(-1, 34)
+	buildings.add_child(building)
+	buildings_data[cell] = building
+
+func construct(building: BuildingBase) -> void:
+	var cell = tilemap.world_to_map(building.position)
+	constructOnCell(building, cell)
+
+func constructExistingBuildings() -> void:
+	for b in buildings.get_children():
+		construct(b)
+
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
