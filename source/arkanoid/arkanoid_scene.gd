@@ -37,6 +37,7 @@ func _ready() -> void:
 	seq.append_callback(self, "start")
 
 func start():
+	get_tree().set_auto_accept_quit(true)
 	ball.position = paddle.position + up() * 50
 	ball.started = true
 	ball.show()
