@@ -3,6 +3,7 @@ extends Node2D
 onready var paddle := $Paddle as Node2D
 onready var ball := $Ball as KinematicBody2D
 onready var line := $PaddleLine as Line2D
+onready var particles := $Particles2D
 
 var camera: Camera2D
 
@@ -38,3 +39,10 @@ func up() -> Vector2:
 
 func _on_Dead_body_entered(body: Node) -> void:
 	ball.position = paddle.position + up() * 50
+
+func _on_Ball_hit() -> void:
+	var p = particles.duplicate() as Particles2D
+	add_child(p)
+	p.position = ball.position
+	p.emitting = true
+	get_tree().create_timer(1.5).connect("timeout", p, "queue_free")
