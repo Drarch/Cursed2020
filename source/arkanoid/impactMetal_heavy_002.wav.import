@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/impactMetal_heavy_002.wav-d124f4196b26f42a364b30c8e4dd5f52.sample"
+
+[deps]
+
+source_file="res://arkanoid/impactMetal_heavy_002.wav"
+dest_files=[ "res://.import/impactMetal_heavy_002.wav-d124f4196b26f42a364b30c8e4dd5f52.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

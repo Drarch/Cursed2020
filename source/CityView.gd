@@ -32,7 +32,6 @@ func _process(delta: float) -> void:
 	if drag:
 		camera.position = drag_camera + (drag - screen_center.get_local_mouse_position()) * camera.zoom
 
-
 func constructRandom():
 	var cell = randomTile()
 
@@ -83,6 +82,9 @@ func _input(event: InputEvent) -> void:
 				drag_camera = camera.position
 			else:
 				drag = Vector2()
+	
+	if event is InputEventKey and event.pressed and event.scancode == KEY_F1:
+		start_arkanoid()
 
 
 func randomTile() -> Vector2:
@@ -97,3 +99,10 @@ func randomTileGlobal() -> Vector2:
 	var cell = randomTile()
 
 	return tilemap.map_to_world(cell)
+
+func start_arkanoid():
+	var root := get_parent()
+	var arkanoid := preload("res://arkanoid/arkanoid_scene.tscn").instance()
+	root.remove_child(self)
+	arkanoid.add_child(self)
+	root.add_child(arkanoid)

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Mission Plausible.ogg-049078e7d4b835ed359a1347decb08e8.oggstr"
+
+[deps]
+
+source_file="res://arkanoid/Mission Plausible.ogg"
+dest_files=[ "res://.import/Mission Plausible.ogg-049078e7d4b835ed359a1347decb08e8.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -2,8 +2,8 @@
 
 [ext_resource path="res://resources/Road.tres" type="TileSet" id=1]
 [ext_resource path="res://CityView.gd" type="Script" id=2]
-[ext_resource path="res://buildings/building_storage_main.tscn" type="PackedScene" id=4]
-[ext_resource path="res://buildings/building_storage.tscn" type="PackedScene" id=5]
+[ext_resource path="res://workers/worker_unemployed.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Sad Town.ogg" type="AudioStream" id=4]
 
 [node name="City" type="Node2D"]
 script = ExtResource( 2 )
@@ -30,11 +30,129 @@ position = Vector2( 512, 300 )
 
 [node name="Buildings" type="YSort" parent="."]
 
-[node name="Storage" parent="Buildings" instance=ExtResource( 5 )]
-position = Vector2( -1520.61, 1784.56 )
+[node name="Unemployed" parent="Buildings" instance=ExtResource( 3 )]
+position = Vector2( 1058.58, 1271.85 )
+movementspeed = 5.0
 
-[node name="StorageMain" parent="Buildings" instance=ExtResource( 4 )]
-position = Vector2( -8.55353, 1358.37 )
+[node name="Unemployed2" parent="Buildings" instance=ExtResource( 3 )]
+position = Vector2( 1058.58, 1271.85 )
+movementspeed = 5.0
+
+[node name="Unemployed3" parent="Buildings" instance=ExtResource( 3 )]
+position = Vector2( 1058.58, 1271.85 )
+movementspeed = 5.0
+
+[node name="Unemployed4" parent="Buildings" instance=ExtResource( 3 )]
+position = Vector2( 1058.58, 1271.85 )
+movementspeed = 5.0
+
+[node name="Unemployed5" parent="Buildings" instance=ExtResource( 3 )]
+position = Vector2( 1058.58, 1271.85 )
+movementspeed = 5.0
+
+[node name="Unemployed6" parent="Buildings" instance=ExtResource( 3 )]
+position = Vector2( 1058.58, 1271.85 )
+movementspeed = 5.0
+
+[node name="Unemployed7" parent="Buildings" instance=ExtResource( 3 )]
+position = Vector2( 1058.58, 1271.85 )
+movementspeed = 5.0
+
+[node name="Unemployed8" parent="Buildings" instance=ExtResource( 3 )]
+position = Vector2( 1058.58, 1271.85 )
+movementspeed = 5.0
+
+[node name="Unemployed9" parent="Buildings" instance=ExtResource( 3 )]
+position = Vector2( 1058.58, 1271.85 )
+movementspeed = 5.0
+
+[node name="Unemployed10" parent="Buildings" instance=ExtResource( 3 )]
+position = Vector2( 1058.58, 1271.85 )
+movementspeed = 5.0
+
+[node name="Unemployed11" parent="Buildings" instance=ExtResource( 3 )]
+position = Vector2( 1058.58, 1271.85 )
+movementspeed = 5.0
+
+[node name="Unemployed12" parent="Buildings" instance=ExtResource( 3 )]
+position = Vector2( 1058.58, 1271.85 )
+movementspeed = 5.0
+
+[node name="Unemployed13" parent="Buildings" instance=ExtResource( 3 )]
+position = Vector2( 1058.58, 1271.85 )
+movementspeed = 5.0
+
+[node name="Unemployed14" parent="Buildings" instance=ExtResource( 3 )]
+position = Vector2( 1058.58, 1271.85 )
+movementspeed = 5.0
+
+[node name="Unemployed15" parent="Buildings" instance=ExtResource( 3 )]
+position = Vector2( 1058.58, 1271.85 )
+movementspeed = 5.0
+
+[node name="Unemployed16" parent="Buildings" instance=ExtResource( 3 )]
+position = Vector2( 1058.58, 1271.85 )
+movementspeed = 5.0
+
+[node name="Unemployed17" parent="Buildings" instance=ExtResource( 3 )]
+position = Vector2( 1058.58, 1271.85 )
+movementspeed = 5.0
+
+[node name="Unemployed18" parent="Buildings" instance=ExtResource( 3 )]
+position = Vector2( 1058.58, 1271.85 )
+movementspeed = 5.0
+
+[node name="Unemployed19" parent="Buildings" instance=ExtResource( 3 )]
+position = Vector2( 1058.58, 1271.85 )
+movementspeed = 5.0
+
+[node name="Unemployed20" parent="Buildings" instance=ExtResource( 3 )]
+position = Vector2( 1058.58, 1271.85 )
+movementspeed = 5.0
+
+[node name="Unemployed21" parent="Buildings" instance=ExtResource( 3 )]
+position = Vector2( 1058.58, 1271.85 )
+movementspeed = 5.0
+
+[node name="Unemployed22" parent="Buildings" instance=ExtResource( 3 )]
+position = Vector2( 1058.58, 1271.85 )
+movementspeed = 5.0
+
+[node name="Unemployed23" parent="Buildings" instance=ExtResource( 3 )]
+position = Vector2( 1058.58, 1271.85 )
+movementspeed = 5.0
+
+[node name="Unemployed24" parent="Buildings" instance=ExtResource( 3 )]
+position = Vector2( 1058.58, 1271.85 )
+movementspeed = 5.0
+
+[node name="Unemployed25" parent="Buildings" instance=ExtResource( 3 )]
+position = Vector2( 1058.58, 1271.85 )
+movementspeed = 5.0
+
+[node name="Unemployed26" parent="Buildings" instance=ExtResource( 3 )]
+position = Vector2( 1058.58, 1271.85 )
+movementspeed = 5.0
+
+[node name="Unemployed27" parent="Buildings" instance=ExtResource( 3 )]
+position = Vector2( 1058.58, 1271.85 )
+movementspeed = 5.0
+
+[node name="Unemployed28" parent="Buildings" instance=ExtResource( 3 )]
+position = Vector2( 1058.58, 1271.85 )
+movementspeed = 5.0
+
+[node name="Unemployed29" parent="Buildings" instance=ExtResource( 3 )]
+position = Vector2( 1058.58, 1271.85 )
+movementspeed = 5.0
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+volume_db = -10.0
+autoplay = true
+bus = "Music"
 [connection signal="timeout" from="Timer" to="." method="constructRandom"]
