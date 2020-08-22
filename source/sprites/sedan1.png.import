@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/tree.png-f6c9ce7c15c3646c3c37a737953f3b49.stex"
+path="res://.import/sedan1.png-9977a75c412b1d2dc949e0487f4c86a2.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/tree.png"
-dest_files=[ "res://.import/tree.png-f6c9ce7c15c3646c3c37a737953f3b49.stex" ]
+source_file="res://sprites/sedan1.png"
+dest_files=[ "res://.import/sedan1.png-9977a75c412b1d2dc949e0487f4c86a2.stex" ]
 
 [params]
 

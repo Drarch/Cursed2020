@@ -1,12 +1,58 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://sprites/taxi.png" type="Texture" id=1]
 [ext_resource path="res://cars/car_sprite_contolletr.gd" type="Script" id=2]
+[ext_resource path="res://sprites/police.png" type="Texture" id=3]
+[ext_resource path="res://sprites/ambulance.png" type="Texture" id=4]
+[ext_resource path="res://sprites/thrash.png" type="Texture" id=5]
+[ext_resource path="res://sprites/sedan4.png" type="Texture" id=6]
+
+[sub_resource type="Animation" id=1]
+resource_name = "idle"
+length = 1.6
+loop = true
+step = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "idle"
+length = 6.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.6, 3.2, 4.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 4 ), ExtResource( 3 ), ExtResource( 1 ), ExtResource( 5 ) ]
+}
 
 [node name="car" type="Sprite"]
-texture = ExtResource( 1 )
+texture = ExtResource( 6 )
 hframes = 8
+frame = 3
 script = ExtResource( 2 )
 __meta__ = {
 "_editor_description_": ""
 }
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/idle = SubResource( 1 )
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+anims/idle = SubResource( 2 )

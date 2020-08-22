@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/tree.png-f6c9ce7c15c3646c3c37a737953f3b49.stex"
+path="res://.import/tileset_grass.png-7dc366f5e5e7d70af6d8d139626742ae.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/tree.png"
-dest_files=[ "res://.import/tree.png-f6c9ce7c15c3646c3c37a737953f3b49.stex" ]
+source_file="res://tileset/tileset_grass.png"
+dest_files=[ "res://.import/tileset_grass.png-7dc366f5e5e7d70af6d8d139626742ae.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
