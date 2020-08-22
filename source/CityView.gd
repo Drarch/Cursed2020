@@ -4,6 +4,9 @@ onready var navigation := $Navigation2D as Navigation2D
 onready var camera := $Camera2D as Camera2D
 onready var screen_center := $UI/ScreenCenter as Node2D
 
+func _ready() -> void:
+	Globals.navigation = navigation
+
 func _process(delta: float) -> void:
 	var screen_size := get_viewport().size
 	screen_center.position = screen_size * 0.5

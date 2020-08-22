@@ -18,6 +18,15 @@ _global_script_class_icons={
 config/name="Cursed2020"
 config/icon="res://icon.png"
 
+[autoload]
+
+GOAP_CACHE="*res://goap/goap_cache.gd"
+Globals="*res://globals.gd"
+
+[display]
+
+window/dpi/allow_hidpi=true
+
 [rendering]
 
 environment/default_environment="res://default_env.tres"

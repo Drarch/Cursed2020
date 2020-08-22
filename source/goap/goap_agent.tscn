@@ -4,4 +4,6 @@
 
 [node name="Actions" type="Node" parent="."]
 
+[node name="a_MoveNavigation2D" type="Node" parent="Actions"]
+
 [node name="Goals" type="Node" parent="."]
