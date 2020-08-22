@@ -47,7 +47,7 @@ func construct():
 		
 		var building := preload("res://buildings/building_base.tscn").instance() as Node2D
 		building.direction = direction
-		building.position = tilemap.map_to_world(cell) + Vector2(-1, 34)
+		building.position = tilemap.map_to_world(cell) + Vector2(0, 32)
 		building.randView()
 		buildings.add_child(building)
 		buildings_data[cell] = building
