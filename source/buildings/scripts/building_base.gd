@@ -10,6 +10,7 @@ onready var roof := $Roof as Sprite
 var direction: int
 
 func _ready() -> void:
+	# Globals.cityView.construct(self)
 	pass
 
 func increase():
