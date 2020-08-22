@@ -46,7 +46,7 @@ func increase():
 		sprite.frame = wall
 		sprite.position.y -= 44
 	
-	roof.position.y = sprite.position.y
+	roof.position.y = sprite.position.y - 44
 	roof.raise()
 
 func opposite(i: int) -> int:
