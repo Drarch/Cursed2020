@@ -9,8 +9,16 @@ onready var roof := $Roof as Sprite
 
 var direction: int
 
+export(int, 0, 20) var maxEmployers: int = 0
+export(int, 0, 20) var maxCargo: int = 0
+
+var employers: Array = []
+var cargo: Array = []
+
+
+
 func _ready() -> void:
-	# Globals.cityView.construct(self)
+	updateWorkplace()
 	pass
 
 func increase():
@@ -45,3 +53,37 @@ func randView() -> void:
 	roof.frame = randi() % ROOF_DIRECTIONS.size()
 	while ROOF_DIRECTIONS[roof.frame] != -1 and ROOF_DIRECTIONS[roof.frame] != direction:
 		roof.frame = randi() % ROOF_DIRECTIONS.size()
+
+func updateWorkplace() -> void:
+	if (maxCargo + maxEmployers) >= (cargo.size() + employers.size()):
+		Globals.addWorkplace(self)
+	else:
+		Globals.removeWorkplace(self)
+
+
+func hireCargo(entity: Node2D) -> bool:
+	if cargo.size() < maxCargo:
+		cargo.append(entity)
+		updateWorkplace()
+		return true
+
+	return false
+
+func fireCargo(entity: Node2D) -> void:
+	if cargo.size() > 0:
+		cargo.erase(entity)
+		updateWorkplace()
+
+
+func hireEmploye(entity: Node2D) -> bool:
+	if employers.size() < maxEmployers:
+		employers.append(entity)
+		updateWorkplace()
+		return true
+
+	return false
+
+func fireEmploye(entity: Node2D) -> void:
+	if employers.size() > 0:
+		employers.erase(entity)
+		updateWorkplace()
