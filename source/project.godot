@@ -13,9 +13,15 @@ _global_script_classes=[ {
 "class": "BuildingBase",
 "language": "GDScript",
 "path": "res://buildings/scripts/building_base.gd"
+}, {
+"base": "Reference",
+"class": "TweenSequence",
+"language": "GDScript",
+"path": "res://TweenSequence.gd"
 } ]
 _global_script_class_icons={
-"BuildingBase": ""
+"BuildingBase": "",
+"TweenSequence": ""
 }
 
 [application]
