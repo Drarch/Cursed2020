@@ -1,17 +1,17 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://CityView.tscn" type="PackedScene" id=1]
 [ext_resource path="res://arkanoid/arkanoid_scene.gd" type="Script" id=2]
 [ext_resource path="res://icon.png" type="Texture" id=3]
 [ext_resource path="res://arkanoid/Ball.gd" type="Script" id=4]
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 320, 16 )
 
-[sub_resource type="CircleShape2D" id=5]
+[sub_resource type="CircleShape2D" id=2]
 radius = 32.0
 
-[sub_resource type="Shader" id=2]
+[sub_resource type="Shader" id=3]
 code = "shader_type canvas_item;
 
 void fragment() {
@@ -26,7 +26,10 @@ void fragment() {
 custom_defines = ""
 
 [sub_resource type="ShaderMaterial" id=4]
-shader = SubResource( 2 )
+shader = SubResource( 3 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 5, 1785.72 )
 
 [node name="Arkanoid" type="Node2D"]
 script = ExtResource( 2 )
@@ -37,7 +40,6 @@ script = ExtResource( 2 )
 visible = false
 position = Vector2( -2453.14, 1542.55 )
 rotation = 0.471239
-scale = Vector2( 1, 1 )
 points = PoolVector2Array( 0, 0, 2048, 0 )
 
 [node name="Paddle" type="StaticBody2D" parent="."]
@@ -45,7 +47,7 @@ position = Vector2( -1540.75, 2007.44 )
 rotation = 0.471239
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Paddle"]
-shape = SubResource( 3 )
+shape = SubResource( 1 )
 
 [node name="icon" type="Sprite" parent="Paddle"]
 scale = Vector2( 10, 0.5 )
@@ -59,9 +61,33 @@ rotation = 0.471239
 script = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ball"]
-scale = Vector2( 1, 1 )
-shape = SubResource( 5 )
+shape = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="Ball"]
 material = SubResource( 4 )
 texture = ExtResource( 3 )
+
+[node name="Wall" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Wall"]
+position = Vector2( 1135.5, 2146.95 )
+rotation = 1.1069
+shape = SubResource( 6 )
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Wall"]
+position = Vector2( 1228.57, 611.167 )
+rotation = -1.10541
+shape = SubResource( 6 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Wall"]
+position = Vector2( -1578.49, 787.388 )
+rotation = 1.1069
+shape = SubResource( 6 )
+
+[node name="Dead" type="Area2D" parent="."]
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Dead"]
+position = Vector2( -1795.24, 2269.22 )
+rotation = -1.10541
+shape = SubResource( 6 )
+[connection signal="body_entered" from="Dead" to="." method="_on_Dead_body_entered"]

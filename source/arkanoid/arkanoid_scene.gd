@@ -29,3 +29,6 @@ func _process(delta: float) -> void:
 
 func up() -> Vector2:
 	return Vector2.UP.rotated(paddle.rotation)
+
+func _on_Dead_body_entered(body: Node) -> void:
+	ball.position = paddle.position + up() * 50
