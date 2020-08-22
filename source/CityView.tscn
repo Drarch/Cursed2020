@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://resources/Road.tres" type="TileSet" id=1]
 [ext_resource path="res://CityView.gd" type="Script" id=2]
 [ext_resource path="res://workers/worker_unemployed.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Sad Town.ogg" type="AudioStream" id=4]
 
 [node name="City" type="Node2D"]
 script = ExtResource( 2 )
@@ -148,4 +149,10 @@ movementspeed = 5.0
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.1
 autostart = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+volume_db = -10.0
+autoplay = true
+bus = "Music"
 [connection signal="timeout" from="Timer" to="." method="constructRandom"]
