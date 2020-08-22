@@ -54,6 +54,11 @@ func randView() -> void:
 	while ROOF_DIRECTIONS[roof.frame] != -1 and ROOF_DIRECTIONS[roof.frame] != direction:
 		roof.frame = randi() % ROOF_DIRECTIONS.size()
 
+func destroy():
+	get_child(get_child_count() - 1).free()
+	if get_child_count() == 0:
+		queue_free()
+
 func updateWorkplace() -> void:
 	if (maxCargo + maxEmployers) >= (cargo.size() + employers.size()):
 		Globals.addWorkplace(self)

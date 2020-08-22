@@ -33,7 +33,7 @@ func _process(delta: float) -> void:
 		camera.position = drag_camera + (drag - screen_center.get_local_mouse_position()) * camera.zoom
 
 
-func constructRandom():	
+func constructRandom():
 	var cell = randomTile()
 
 	if not cell in buildings_data:
@@ -56,7 +56,7 @@ func constructRandom():
 		buildings_data[cell].increase()
 
 func constructOnCell(building: BuildingBase, cell: Vector2) -> void:
-	building.position = tilemap.map_to_world(cell) + Vector2(-1, 34)
+	building.position = tilemap.map_to_world(cell) + Vector2(0, 34)
 	buildings.add_child(building)
 	buildings_data[cell] = building
 

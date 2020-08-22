@@ -13,9 +13,15 @@ _global_script_classes=[ {
 "class": "BuildingBase",
 "language": "GDScript",
 "path": "res://buildings/scripts/building_base.gd"
+}, {
+"base": "Reference",
+"class": "TweenSequence",
+"language": "GDScript",
+"path": "res://TweenSequence.gd"
 } ]
 _global_script_class_icons={
-"BuildingBase": ""
+"BuildingBase": "",
+"TweenSequence": ""
 }
 
 [application]
@@ -29,6 +35,10 @@ config/icon="res://icon.png"
 DS="*res://goap/datastructures.gd"
 GOAP_CACHE="*res://goap/goap_cache.gd"
 Globals="*res://globals.gd"
+
+[debug]
+
+gdscript/warnings/enable=false
 
 [display]
 
