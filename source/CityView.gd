@@ -29,8 +29,7 @@ func _process(delta: float) -> void:
 	
 	if drag:
 		camera.position = drag_camera + (drag - screen_center.get_local_mouse_position()) * camera.zoom
-	
-	construct()
+
 
 func construct():	
 	var cell = randomTile()
@@ -49,6 +48,7 @@ func construct():
 		var building := preload("res://buildings/building_base.tscn").instance() as Node2D
 		building.direction = direction
 		building.position = tilemap.map_to_world(cell) + Vector2(-1, 34)
+		building.randView()
 		buildings.add_child(building)
 		buildings_data[cell] = building
 	else:
