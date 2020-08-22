@@ -46,6 +46,8 @@ func up() -> Vector2:
 
 func _on_Dead_body_entered(body: Node) -> void:
 	ball.position = paddle.position + up() * 50
+	if ball.started:
+		play_sample("res://arkanoid/call_for_backup.wav")
 
 func _on_Ball_hit() -> void:
 	var p = particles.duplicate() as Particles2D
@@ -55,19 +57,18 @@ func _on_Ball_hit() -> void:
 	get_tree().create_timer(1.5).connect("timeout", p, "queue_free")
 	shake = 20
 	
-	var stream := AudioStreamPlayer.new()
-	stream.stream = AudioStreamRandomPitch.new()
-	stream.stream.audio_stream = load(str("res://arkanoid/impactPlate_heavy_00",randi() % 5 , ".wav"))
-	stream.autoplay = true
+	var stream = play_sample(str("res://arkanoid/impactPlate_heavy_00",randi() % 5 , ".wav"))
 	stream.volume_db = 5 + randi() % 6
-	stream.connect("finished", stream, "queue_free")
-	add_child(stream)
 
 func _on_Ball_hit2() -> void:
+	var stream = play_sample(str("res://arkanoid/impactMetal_heavy_00",randi() % 5 , ".wav"))
+	stream.volume_db = 5 + randi() % 6
+
+func play_sample(sample):
 	var stream := AudioStreamPlayer.new()
 	stream.stream = AudioStreamRandomPitch.new()
-	stream.stream.audio_stream = load(str("res://arkanoid/impactMetal_heavy_00",randi() % 5 , ".wav"))
+	stream.stream.audio_stream = load(sample)
 	stream.autoplay = true
-	stream.volume_db = 5 + randi() % 6
 	stream.connect("finished", stream, "queue_free")
 	add_child(stream)
+	return stream
