@@ -11,6 +11,8 @@ var drag_camera: Vector2
 var buildings_data: Dictionary
 
 func _ready() -> void:
+	get_tree().set_auto_accept_quit(false)
+	
 	Globals.cityView = self
 	Globals.navigation = navigation
 
@@ -109,3 +111,9 @@ func start_arkanoid():
 	root.remove_child(self)
 	arkanoid.add_child(self)
 	root.add_child(arkanoid)
+
+var quit = false
+func _notification(what: int) -> void:
+	if not quit and what == NOTIFICATION_WM_QUIT_REQUEST:
+		quit = true
+		call_deferred("start_arkanoid")
