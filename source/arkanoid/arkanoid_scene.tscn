@@ -16,7 +16,7 @@ radius = 37.0
 extents = Vector2( 5, 1785.72 )
 
 [sub_resource type="RectangleShape2D" id=7]
-extents = Vector2( 5, 6606.07 )
+extents = Vector2( 348.389, 6606.07 )
 
 [sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 672.825, 1785.72 )
@@ -120,7 +120,7 @@ shape = SubResource( 6 )
 visible = false
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="Dead"]
-position = Vector2( -1795.24, 2269.22 )
+position = Vector2( -1968.91, 2556.16 )
 rotation = -1.10541
 shape = SubResource( 7 )
 

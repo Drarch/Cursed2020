@@ -6,6 +6,7 @@ onready var line := $PaddleLine as Line2D
 onready var particles := $Particles2D
 
 var camera: Camera2D
+var shake: int
 
 func _ready() -> void:
 	ball.hide()
@@ -33,6 +34,11 @@ func start():
 
 func _process(delta: float) -> void:
 	paddle.global_position = line.to_global(line.get_local_mouse_position().project(line.points[1]))
+	if shake:
+		camera.offset = Vector2(rand_range(-shake, shake), rand_range(-shake, shake))
+		shake -= 1
+	else:
+		camera.offset = Vector2()
 
 func up() -> Vector2:
 	return Vector2.UP.rotated(paddle.rotation)
@@ -46,3 +52,12 @@ func _on_Ball_hit() -> void:
 	p.position = ball.position
 	p.emitting = true
 	get_tree().create_timer(1.5).connect("timeout", p, "queue_free")
+	shake = 20
+	
+	var stream := AudioStreamPlayer.new()
+	stream.stream = AudioStreamRandomPitch.new()
+	stream.stream.audio_stream = load(str("res://arkanoid/impactPlate_heavy_00",randi() % 5 , ".wav"))
+	stream.autoplay = true
+	stream.volume_db = 5 + randi() % 6
+	stream.connect("finished", stream, "queue_free")
+	add_child(stream)
