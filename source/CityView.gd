@@ -50,10 +50,13 @@ func constructRandom():
 		building.direction = direction
 		building.randView()
 		buildings.add_child(building)
-
+		
 		constructOnCell(building, cell)
 	else:
 		buildings_data[cell].increase()
+	
+	if Globals.maxWorkers > Globals.workers:
+		buildings_data[cell].spawnWorker(0)
 
 func constructOnCell(building: BuildingBase, cell: Vector2) -> void:
 	building.position = tilemap.map_to_world(cell) + Vector2(0, 34)

@@ -1,17 +1,20 @@
 extends Node
 
+var maxWorkers = 200
+var workers = 0
+
 var cityView: Node2D
 
-var navigation: Navigation2D
-
-func _ready() -> void:
-	if not OS.has_feature("editor"):
-		AudioServer.set_bus_mute(AudioServer.get_bus_index("Music"), false)
 var navigation: Navigation2D
 
 var mainStorage: BuildingBase
 
 var workplaces: Array = []
+
+
+func _ready() -> void:
+	if not OS.has_feature("editor"):
+		AudioServer.set_bus_mute(AudioServer.get_bus_index("Music"), false)
 
 
 func jobsAvailable() -> bool:

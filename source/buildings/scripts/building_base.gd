@@ -79,7 +79,6 @@ func generateWorker():
 	var type: int = getJob()
 
 	var worker = spawnWorker(type)
-	worker.position = self.position
 
 	if worker:
 		if type == WorkerType.CARGO:
@@ -141,5 +140,7 @@ func spawnWorker(workerType: int) -> Node2D:
 
 	if worker:
 		self.get_parent().add_child(worker)
+		worker.position = self.position
+		Globals.workers += 1
 
 	return worker
