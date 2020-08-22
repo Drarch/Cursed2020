@@ -146,5 +146,6 @@ position = Vector2( 1058.58, 1271.85 )
 movementspeed = 5.0
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
 autostart = true
 [connection signal="timeout" from="Timer" to="." method="constructRandom"]
