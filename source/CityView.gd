@@ -3,6 +3,10 @@ extends Node2D
 onready var navigation := $Navigation2D as Navigation2D
 onready var camera := $Camera2D as Camera2D
 onready var screen_center := $UI/ScreenCenter as Node2D
+onready var tilemap := $Navigation2D/TileMap as TileMap
+onready var buildings := $Buildings
+
+var buildings_data: Dictionary
 
 func _process(delta: float) -> void:
 	var screen_size := get_viewport().size
@@ -16,6 +20,22 @@ func _process(delta: float) -> void:
 		camera.position.y += 800 * delta
 	elif screen_center.get_local_mouse_position().y < -screen_size.y * 0.4:
 		camera.position.y -= 800 * delta
+	
+	construct()
+
+func construct():
+	var cells := tilemap.get_used_cells()
+	var cell := cells[randi() % cells.size()] as Vector2
+	while tilemap.get_cellv(cell) != 2:
+		cell = cells[randi() % cells.size()]
+	
+	if not cell in buildings_data:
+		var building := preload("res://nodes/building.tscn").instance() as Node2D
+		building.position = tilemap.map_to_world(cell)
+		buildings.add_child(building)
+		buildings_data[cell] = building
+	else:
+		buildings_data[cell].increase()
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
