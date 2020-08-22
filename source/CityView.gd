@@ -46,7 +46,7 @@ func construct():
 		elif tilemap.get_cellv(cell + Vector2.LEFT) == 0:
 			direction = 3
 		
-		var building := preload("res://nodes/building.tscn").instance() as Node2D
+		var building := preload("res://buildings/building_base.tscn").instance() as Node2D
 		building.direction = direction
 		building.position = tilemap.map_to_world(cell) + Vector2(-1, 34)
 		buildings.add_child(building)
