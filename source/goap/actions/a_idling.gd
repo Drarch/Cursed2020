@@ -45,12 +45,10 @@ func get_target_location():
 	# 	certain location and therefore are able to return a position to move to
 	var navigation = Globals.navigation
 	
-	target = Globals.cityView.randomTile()
-	var path := []
-	path = navigation.get_simple_path(entity.position, target, false)
-	
-	target = path.back()
-
+	target = Globals.cityView.randomTileGlobal()
+	# var path := []
+	# path = navigation.get_simple_path(entity.position, target, false)
+	# target = path.back()
 	return target
 
 func execute():
