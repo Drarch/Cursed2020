@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://white 2x2.png" type="Texture" id=1]
 [ext_resource path="res://Sprites/Rocks/Gray_Rock_Outline.png" type="Texture" id=2]
@@ -18,8 +18,13 @@
 [ext_resource path="res://workers/Blacksmith.tscn" type="PackedScene" id=16]
 [ext_resource path="res://workers/Lumberjack.tscn" type="PackedScene" id=17]
 [ext_resource path="res://workers/Miner.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Sprites/Plants/Blue_Spruce.png" type="Texture" id=19]
+[ext_resource path="res://MapScene.gd" type="Script" id=20]
+[ext_resource path="res://Sprites/Resources/Fish.png" type="Texture" id=21]
+[ext_resource path="res://workers/Fisherman.tscn" type="PackedScene" id=22]
 
 [node name="Testscene" type="Node"]
+script = ExtResource( 20 )
 
 [node name="Background" type="TextureRect" parent="."]
 modulate = Color( 0.294118, 0.34902, 0.294118, 1 )
@@ -51,8 +56,12 @@ position = Vector2( 800, 220 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 5 )
 
+[node name="Lake" type="Sprite" parent="."]
+position = Vector2( 539.721, 536.023 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 19 )
+
 [node name="Smithy" type="Sprite" parent="."]
-editor/display_folded = true
 position = Vector2( 461, 87 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 6 )
@@ -78,7 +87,6 @@ texture = ExtResource( 10 )
 [node name="ore" parent="Stockpile" instance=ExtResource( 11 )]
 
 [node name="wood" type="Label" parent="Stockpile"]
-editor/display_folded = true
 margin_left = 7.5
 margin_top = 19.0
 margin_right = 47.5
@@ -89,13 +97,15 @@ custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "1
 "
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Sprite" type="Sprite" parent="Stockpile/wood"]
 position = Vector2( -7, 9 )
 texture = ExtResource( 13 )
 
 [node name="axes" type="Label" parent="Stockpile"]
-editor/display_folded = true
 margin_left = -7.5
 margin_top = 29.0
 margin_right = 32.5
@@ -112,7 +122,6 @@ position = Vector2( -7, 9 )
 texture = ExtResource( 14 )
 
 [node name="picks" type="Label" parent="Stockpile"]
-editor/display_folded = true
 margin_left = 7.5
 margin_top = 29.0
 margin_right = 47.5
@@ -123,10 +132,32 @@ custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "1
 "
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Sprite" type="Sprite" parent="Stockpile/picks"]
 position = Vector2( -7, 9 )
 texture = ExtResource( 15 )
+
+[node name="fish" type="Label" parent="Stockpile"]
+margin_left = 1.35355
+margin_top = 38.5607
+margin_right = 41.3535
+margin_bottom = 73.5607
+rect_scale = Vector2( 0.5, 0.5 )
+custom_fonts/font = ExtResource( 12 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "1
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="Stockpile/fish"]
+position = Vector2( -9, 9 )
+texture = ExtResource( 21 )
 
 [node name="Blacksmith" parent="." instance=ExtResource( 16 )]
 position = Vector2( 469.156, 199.554 )
@@ -136,3 +167,6 @@ position = Vector2( 550, 310 )
 
 [node name="Miner" parent="." instance=ExtResource( 18 )]
 position = Vector2( 330.194, 313.573 )
+
+[node name="Fisherman" parent="." instance=ExtResource( 22 )]
+position = Vector2( 590.903, 413.254 )

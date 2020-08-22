@@ -10,7 +10,7 @@ var movementspeed = 50
 onready var pile = get_node("../Stockpile")
 
 func _ready():
-	print("smith ready")
+	pass
 	
 func update_inventory():
 	$ore.visible = !(!hasOre)
@@ -20,7 +20,6 @@ func update_inventory():
 	$pick.visible = !(!hasPick)
 
 func _draw():
-	print("smith")
 	$ore.visible = !(!hasOre)
 	$wood.visible = !(!hasWood)
 	

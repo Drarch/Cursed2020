@@ -2,17 +2,18 @@ extends "res://goap/goap_action.gd"
 
 func setup():
 	# Called after setup_common()
-	cost = 10.0 # Higher cost actions are considered less preferable over lower cost actions when planning
-	name = "a_gatherOre" # String identifier of this action. setup_common() will make sure the action's node is named after this
+	cost = 1.0 # Higher cost actions are considered less preferable over lower cost actions when planning
+	name = "a_deliverFish" # String identifier of this action. setup_common() will make sure the action's node is named after this
 	type = TYPE_NORMAL # See ancestor script for type descriptions
 	
 	# Movement - use add_movement(string id)
 	add_movement("linear")
 	
 	# Preconditions - use add_precondition(string symbol, bool value)
+	add_precondition("s_hasFish", true)
 	
 	# Effects - use add_effect(string symbol, bool value)
-	add_effect("s_hasOre", true)
+	add_effect("s_deliveredFish", true)
 	return
 
 func reset():
@@ -24,7 +25,6 @@ func evaluate():
 	# Planner calls this after resetting the action
 	# If returning true, the planner will consider this action for its current plan
 	# If returning false, the planner will not include this action in the plan for the currently inspected goal at all!
-	if (entity.hasOre): return false
 	return true
 
 func get_cost():
@@ -40,7 +40,7 @@ func get_target_location():
 	# This function should only need to return a Vector2 if it has a precondition "s_atPoint" or similar, 
 	# 	so TYPE_MOVEMENT actions should only be planned to occur before actions that need the agent to be at a 
 	# 	certain location and therefore are able to return a position to move to
-	return entity.get_node("../Pebbles").get_global_position()
+	return entity.pile.get_global_position()
 
 func execute():
 	# Manipulate the world through this code
@@ -49,11 +49,8 @@ func execute():
 	#  - ABORTED - Action's execution code has encountered an unsolvable state, it is aborting its execution
 	#  - CONTINUED - Action's execution code has run successfully, but the action is not done yet
 	#  - COMPLETED - Action's execution code has run successfully and the action is done executing
-	
-	entity.add_orechunk()
+	entity.pile.fish += 1
+	entity.pile.update_stock()
+	entity.hasFish = false
 	entity.update_inventory()
-
-	if entity.hasOre:
-		return COMPLETED
-	else:
-		return CONTINUED
+	return COMPLETED

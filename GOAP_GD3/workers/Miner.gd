@@ -19,16 +19,14 @@ func update_inventory():
 	if orechunks>0:
 		$orechunks.text = str(orechunks)
 		$orechunks.visible = true
-		$ore_block.visible = false
 		
 	if (hasOre):
-		$ore_block.visible = true
 		$orechunks.visible = false
-	
+		
+	$ore_block.visible = hasOre
 	$pick.visible = !(!hasPick)
 
 func _draw():
-	print ("miner")
 	if orechunks>0:
 		$orechunks.text = str(orechunks)
 		$orechunks.visible = true
