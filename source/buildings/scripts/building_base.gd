@@ -1,4 +1,5 @@
 extends Node2D
+class_name BuildingBase
 
 const FLOOR_DIRECTIONS := [0, 1, 0, 1, 2, 3, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0 , 1, 0, 1, 0, 1, 0, 1, 2, 3, 0, 0, 1, 3, 2, 2, 3, 0, 1, 2, 3, 0, 1, 0, 0, 1, 1, 0, 1]
 const WALL_DIRECTIONS := [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, -1, -1, -1, -1, -1, -1, -1, -1]
@@ -9,14 +10,7 @@ onready var roof := $Roof as Sprite
 var direction: int
 
 func _ready() -> void:
-	var frool := randi() % FLOOR_DIRECTIONS.size()
-	while FLOOR_DIRECTIONS[frool] != direction:
-		frool = randi() % FLOOR_DIRECTIONS.size()
-	$Wall.frame = frool
-		
-	roof.frame = randi() % ROOF_DIRECTIONS.size()
-	while ROOF_DIRECTIONS[roof.frame] != -1 and ROOF_DIRECTIONS[roof.frame] != direction:
-		roof.frame = randi() % ROOF_DIRECTIONS.size()
+	pass
 
 func increase():
 	var sprite := get_child(get_child_count() - 2).duplicate() as Sprite
@@ -39,3 +33,14 @@ func increase():
 
 func opposite(i: int) -> int:
 	return [2, 3, 0, 1][i]
+
+func randView() -> void:
+	var frool := randi() % FLOOR_DIRECTIONS.size()
+	while FLOOR_DIRECTIONS[frool] != direction:
+		frool = randi() % FLOOR_DIRECTIONS.size()
+	$Wall.frame = frool
+	
+	roof = $Roof as Sprite
+	roof.frame = randi() % ROOF_DIRECTIONS.size()
+	while ROOF_DIRECTIONS[roof.frame] != -1 and ROOF_DIRECTIONS[roof.frame] != direction:
+		roof.frame = randi() % ROOF_DIRECTIONS.size()
