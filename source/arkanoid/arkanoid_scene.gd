@@ -62,3 +62,12 @@ func _on_Ball_hit() -> void:
 	stream.volume_db = 5 + randi() % 6
 	stream.connect("finished", stream, "queue_free")
 	add_child(stream)
+
+func _on_Ball_hit2() -> void:
+	var stream := AudioStreamPlayer.new()
+	stream.stream = AudioStreamRandomPitch.new()
+	stream.stream.audio_stream = load(str("res://arkanoid/impactMetal_heavy_00",randi() % 5 , ".wav"))
+	stream.autoplay = true
+	stream.volume_db = 5 + randi() % 6
+	stream.connect("finished", stream, "queue_free")
+	add_child(stream)

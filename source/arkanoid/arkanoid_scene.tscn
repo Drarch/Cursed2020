@@ -176,4 +176,5 @@ volume_db = -10.0
 autoplay = true
 bus = "Music"
 [connection signal="hit" from="Ball" to="." method="_on_Ball_hit"]
+[connection signal="hit2" from="Ball" to="." method="_on_Ball_hit2"]
 [connection signal="body_entered" from="Dead" to="." method="_on_Dead_body_entered"]
