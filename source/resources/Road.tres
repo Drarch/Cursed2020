@@ -1,0 +1,155 @@
+[gd_resource type="TileSet" load_steps=30 format=2]
+
+[ext_resource path="res://tileset/Road.png" type="Texture" id=1]
+
+
+[sub_resource type="NavigationPolygon" id=1]
+vertices = PoolVector2Array( 0, 0, 64, 32, 128, 0, 64, -32 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
+
+[sub_resource type="NavigationPolygon" id=2]
+vertices = PoolVector2Array( 0, 0, 64, 32, 128, 0, 64, -32 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
+
+[sub_resource type="NavigationPolygon" id=3]
+vertices = PoolVector2Array( 0, 0, 64, 32, 128, 0, 64, -32 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
+
+[sub_resource type="NavigationPolygon" id=4]
+vertices = PoolVector2Array( 0, 0, 64, 32, 128, 0, 64, -32 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
+
+[sub_resource type="NavigationPolygon" id=5]
+vertices = PoolVector2Array( 0, 0, 64, 32, 128, 0, 64, -32 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
+
+[sub_resource type="NavigationPolygon" id=6]
+vertices = PoolVector2Array( 0, 0, 64, 32, 128, 0, 64, -32 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
+
+[sub_resource type="NavigationPolygon" id=7]
+vertices = PoolVector2Array( 0, 0, 64, 32, 128, 0, 64, -32 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
+
+[sub_resource type="NavigationPolygon" id=8]
+vertices = PoolVector2Array( 0, 0, 64, 32, 128, 0, 64, -32 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
+
+[sub_resource type="NavigationPolygon" id=9]
+vertices = PoolVector2Array( 0, 0, 64, 32, 128, 0, 64, -32 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
+
+[sub_resource type="NavigationPolygon" id=10]
+vertices = PoolVector2Array( 0, 0, 64, 32, 128, 0, 64, -32 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
+
+[sub_resource type="NavigationPolygon" id=11]
+vertices = PoolVector2Array( 0, 0, 64, 32, 128, 0, 64, -32 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
+
+[sub_resource type="NavigationPolygon" id=12]
+vertices = PoolVector2Array( 0, 0, 64, 32, 128, 0, 64, -32 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
+
+[sub_resource type="NavigationPolygon" id=13]
+vertices = PoolVector2Array( 0, 0, 64, 32, 128, 0, 64, -32 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
+
+[sub_resource type="NavigationPolygon" id=14]
+vertices = PoolVector2Array( 0, 0, 64, 32, 128, 0, 64, -32 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
+
+[sub_resource type="NavigationPolygon" id=15]
+vertices = PoolVector2Array( 0, 0, 64, 32, 128, 0, 64, -32 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
+
+[sub_resource type="NavigationPolygon" id=16]
+vertices = PoolVector2Array( 0, 0, 64, 32, 128, 0, 64, -32 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
+
+[sub_resource type="NavigationPolygon" id=17]
+vertices = PoolVector2Array( 0, 0, 64, 32, 128, 0, 64, -32 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
+
+[sub_resource type="NavigationPolygon" id=18]
+vertices = PoolVector2Array( 0, 0, 64, 32, 128, 0, 64, -32 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
+
+[sub_resource type="NavigationPolygon" id=19]
+vertices = PoolVector2Array( 0, 0, 131, 0, 131, 131, 0, 131 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
+
+[sub_resource type="NavigationPolygon" id=20]
+vertices = PoolVector2Array( 0, 0, 64, 32, 128, 0, 64, -32 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
+
+[sub_resource type="NavigationPolygon" id=21]
+vertices = PoolVector2Array( 0, 0, 64, 32, 128, 0, 64, -32 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
+
+[sub_resource type="NavigationPolygon" id=22]
+vertices = PoolVector2Array( 0, 0, 64, 32, 128, 0, 64, -32 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
+
+[sub_resource type="NavigationPolygon" id=23]
+vertices = PoolVector2Array( 0, 0, 64, 32, 128, 0, 64, -32 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
+
+[sub_resource type="NavigationPolygon" id=24]
+vertices = PoolVector2Array( 0, 0, 64, 32, 128, 0, 64, -32 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
+
+[sub_resource type="NavigationPolygon" id=25]
+vertices = PoolVector2Array( 0, 0, 64, 32, 128, 0, 64, -32 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
+
+[sub_resource type="NavigationPolygon" id=26]
+vertices = PoolVector2Array( 0, 0, 64, 32, 128, 0, 64, -32 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
+
+[sub_resource type="NavigationPolygon" id=27]
+vertices = PoolVector2Array( 0, 0, 64, 32, 128, 0, 64, -32 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
+
+[sub_resource type="NavigationPolygon" id=28]
+vertices = PoolVector2Array( 0, 0, 64, 32, 128, 0, 64, -32 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
+
+[resource]
+0/name = "test_tileset2.png 0"
+0/texture = ExtResource( 1 )
+0/tex_offset = Vector2( 0, -64 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 786, 655 )
+0/tile_mode = 1
+0/autotile/bitmask_mode = 1
+0/autotile/bitmask_flags = [ Vector2( 0, 0 ), 176, Vector2( 0, 1 ), 48, Vector2( 0, 2 ), 446, Vector2( 0, 3 ), 154, Vector2( 0, 4 ), 50, Vector2( 1, 0 ), 58, Vector2( 1, 1 ), 432, Vector2( 1, 2 ), 438, Vector2( 1, 3 ), 54, Vector2( 1, 4 ), 18, Vector2( 2, 0 ), 506, Vector2( 2, 1 ), 504, Vector2( 2, 2 ), 511, Vector2( 2, 3 ), 63, Vector2( 2, 4 ), 191, Vector2( 3, 0 ), 144, Vector2( 3, 1 ), 216, Vector2( 3, 2 ), 219, Vector2( 3, 3 ), 27, Vector2( 3, 4 ), 184, Vector2( 4, 0 ), 152, Vector2( 4, 1 ), 178, Vector2( 4, 2 ), 251, Vector2( 4, 3 ), 24, Vector2( 4, 4 ), 26, Vector2( 5, 0 ), 186, Vector2( 5, 1 ), 146, Vector2( 5, 2 ), 56 ]
+0/autotile/icon_coordinate = Vector2( 0, 0 )
+0/autotile/tile_size = Vector2( 131, 131 )
+0/autotile/spacing = 0
+0/autotile/occluder_map = [  ]
+0/autotile/navpoly_map = [ Vector2( 0, 0 ), SubResource( 1 ), Vector2( 0, 1 ), SubResource( 2 ), Vector2( 0, 2 ), SubResource( 3 ), Vector2( 0, 3 ), SubResource( 4 ), Vector2( 0, 4 ), SubResource( 5 ), Vector2( 1, 0 ), SubResource( 6 ), Vector2( 1, 1 ), SubResource( 7 ), Vector2( 1, 2 ), SubResource( 8 ), Vector2( 1, 3 ), SubResource( 9 ), Vector2( 1, 4 ), SubResource( 10 ), Vector2( 2, 0 ), SubResource( 11 ), Vector2( 2, 1 ), SubResource( 12 ), Vector2( 2, 2 ), SubResource( 13 ), Vector2( 2, 3 ), SubResource( 14 ), Vector2( 2, 4 ), SubResource( 15 ), Vector2( 3, 0 ), SubResource( 16 ), Vector2( 3, 1 ), SubResource( 17 ), Vector2( 3, 2 ), SubResource( 18 ), Vector2( 3, 3 ), SubResource( 19 ), Vector2( 3, 4 ), SubResource( 20 ), Vector2( 4, 0 ), SubResource( 21 ), Vector2( 4, 1 ), SubResource( 22 ), Vector2( 4, 2 ), SubResource( 23 ), Vector2( 4, 3 ), SubResource( 24 ), Vector2( 4, 4 ), SubResource( 25 ), Vector2( 5, 0 ), SubResource( 26 ), Vector2( 5, 1 ), SubResource( 27 ), Vector2( 5, 2 ), SubResource( 28 ) ]
+0/autotile/priority_map = [  ]
+0/autotile/z_index_map = [  ]
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+1/name = "test_tileset2.png 1"
+1/texture = ExtResource( 1 )
+1/tex_offset = Vector2( 0, -64 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 655, 524, 131, 131 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape_one_way = false
+1/shape_one_way_margin = 0.0
+1/shapes = [  ]
+1/z_index = 0
