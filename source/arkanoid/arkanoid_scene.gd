@@ -1,27 +1,32 @@
 extends Node2D
 
 ##todo wynik
+##todo particle gwiazdek
 
 const POWER_UP_NOCHANCE = 10
 
 onready var paddle := $Paddle as Node2D
-onready var ball := $Ball as KinematicBody2D
 onready var line := $PaddleLine as Line2D
 onready var particles := $Particles2D
 onready var label := $CanvasLayer/Label
 onready var ap := $CanvasLayer/AnimationPlayer as AnimationPlayer
 
 onready var mushrooms_node := $CanvasLayer/ColorRect
+onready var creeps_node := $CanvasLayer/ColorRect2
 
 var camera: Camera2D
 var shake: int
 var tilemap: TileMap
 var city
+var balls: Array
 
 var mushrooms: float
+var creeps: float
 
 func _ready() -> void:
-	ball.hide()
+	balls.append($Ball)
+	
+	balls[0].hide()
 	label.hide()
 	
 	if not has_node("City"):
@@ -39,16 +44,16 @@ func _ready() -> void:
 	city = $City
 	
 	var seq := TweenSequence.new()
-	seq.append(camera, "global_position", paddle.get_node("CameraHere").global_position + Vector2(900, -800), 1)
+	seq.append(camera, "global_position", paddle.get_node("CameraHere").global_position + Vector2(1100, -700), 1)
 	seq.parallel().append(camera, "rotation_degrees", 27, 1)
 	seq.parallel().append(camera, "zoom", Vector2.ONE * 4, 1)
 	seq.append_callback(self, "start")
 
 func start():
 	get_tree().set_auto_accept_quit(true)
-	ball.position = paddle.position + up() * 50
-	ball.started = true
-	ball.show()
+	balls[0].position = paddle.position + up() * 50
+	balls[0].started = true
+	balls[0].show()
 
 func _process(delta: float) -> void:
 	paddle.global_position = line.to_global(line.get_local_mouse_position().project(line.points[1]))
@@ -60,16 +65,21 @@ func _process(delta: float) -> void:
 	
 	mushrooms -= delta
 	mushrooms_node.visible = mushrooms > 0
+	creeps -= delta
+	creeps_node.visible = creeps > 0
 
 func up() -> Vector2:
 	return Vector2.UP.rotated(paddle.rotation)
 
 func _on_Dead_body_entered(body: Node) -> void:
-	ball.position = paddle.position + up() * 50
-	if ball.started:
+	if not body.is_in_group("balls"):
+		return
+	
+	body.position = paddle.position + up() * 50
+	if body.started:
 		play_sample("res://arkanoid/call_for_backup.wav")
 
-func _on_Ball_hit() -> void:
+func _on_Ball_hit(ball) -> void:
 	partcl(ball.global_position)
 	shake = 20 + ball.explosion
 	
@@ -99,7 +109,7 @@ func partcl(pp: Vector2):
 	p.emitting = true
 	get_tree().create_timer(1.5).connect("timeout", p, "queue_free")
 
-func _on_Ball_hit2() -> void:
+func _on_Ball_hit2(ball) -> void:
 	var stream = play_sample(str("res://arkanoid/impactMetal_heavy_00",randi() % 5 , ".wav"))
 	stream.volume_db = 5 + randi() % 6
 
@@ -113,18 +123,24 @@ func play_sample(sample):
 	return stream
 
 func powerup(id):
-	play_sample("res://arkanoid/level_up.wav")
-#	id = 4
+#	id = 5
+	if id != 10:
+		play_sample("res://arkanoid/level_up.wav")
+	else:
+		play_sample("res://arkanoid/kenney.wav")
 	
 	match id:
 		0:
-			ball.speed += 1
+			for ball in balls:
+				ball.speed += 1
 			label.text = "SPEED UP"
 		1:
-			ball.destruction += 1
+			for ball in balls:
+				ball.destruction += 1
 			label.text = "DESTRUCTION UP"
 		2:
-			ball.explosion += 1
+			for ball in balls:
+				ball.explosion += 1
 			label.text = "EXPLOSION UP"
 		3:
 			for cell in city.buildings_data:
@@ -132,12 +148,14 @@ func powerup(id):
 					city.buildings_data[cell].increase()
 			label.text = "CITY UP"
 		4:
-			label.text = "MUSHROOM UP"
 			mushrooms = max(mushrooms + 5, 5)
+			label.text = "MUSHROOM UP"
 		5:
-			label.text = "CREEPS UP"##TODO
+			creeps = max(creeps + 5, 5)
+			label.text = "CREEPS UP"
 		6:
-			ball.speed += 2000
+			for ball in balls:
+				ball.speed += 2000
 			label.text = "HYPER UP"
 			get_tree().create_timer(5).connect("timeout", self, "dehyper")
 		7:
@@ -147,11 +165,26 @@ func powerup(id):
 		8:
 			$AudioStreamPlayer.pitch_scale += 0.1
 			label.text = "MUSIC UP"
+		9:
+			label.text = "BLOOD UP"
+			for i in 20:
+				var cell = city.buildings_data.keys()[randi() % city.buildings_data.keys().size()]
+				if city.buildings_data[cell]:
+					city.buildings_data[cell].modulate = Color.red
+		10:
+			label.text = "KENNEY UP"
+		11:
+			var ball2 = balls[0].duplicate()
+			ball2.direction = ball2.direction.rotated(PI/4)
+			balls.append(ball2)
+			call_deferred("add_child", ball2)
+			label.text = "BALL UP"
 
 	ap.play("POWERUP")
 
 func dehyper():
-	ball.speed -= 2000
+	for ball in balls:
+		ball.speed -= 2000
 
 func depaddle():
 	paddle.scale.x = 1
