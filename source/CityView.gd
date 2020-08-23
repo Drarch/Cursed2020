@@ -10,6 +10,8 @@ var drag: Vector2
 var drag_camera: Vector2
 var buildings_data: Dictionary
 
+export(int ,0 ,1000) var startEmployers: int = 10
+
 func _ready() -> void:
 	get_tree().set_auto_accept_quit(false)
 	
@@ -18,7 +20,7 @@ func _ready() -> void:
 
 	constructExistingBuildings()
 	
-	for i in range(10):
+	for i in range(startEmployers):
 		constructRandom()
 
 func _process(delta: float) -> void:
