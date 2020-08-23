@@ -1,6 +1,11 @@
 extends Node
 
-var maxWorkers = 200
+var car_civil = [preload("res://sprites/taxi.png"), preload("res://sprites/sedan1.png"), preload("res://sprites/sedan_silver.png"), preload("res://sprites/sedan_green.png"),preload("res://sprites/sedan_blue.png")]
+var car_cargo = [preload("res://sprites/truck.png"),preload("res://sprites/truck_red.png")]
+var car_lumber = [preload("res://sprites/thrash.png")]
+var car_builder = [preload("res://sprites/pickup.png"),preload("res://sprites/ambulance.png"), preload("res://sprites/police.png")]
+
+var maxWorkers = 2000
 var workers = 0
 
 var cityView: Node2D
@@ -10,6 +15,7 @@ var navigation: Navigation2D
 var mainStorage: BuildingBase
 
 var workplaces: Array = []
+
 
 
 func _ready() -> void:

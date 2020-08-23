@@ -110,7 +110,7 @@ func _process(delta):
 #		var xx = lerp(pointStart.x, pointCurrent.x, min(1.0, entity.movementspeed * delta / max(pointStart.distance_to(pointCurrent),1)))
 #		var yy = lerp(pointStart.y, pointCurrent.y, min(1.0, entity.movementspeed * delta / max(pointStart.distance_to(pointCurrent),1)))
 		velocity += entity.global_position.direction_to(pointCurrent) * entity.movementspeed * delta
-		velocity *= 0.95
+		velocity *= entity.friction
 		entity.global_position += velocity
 		
 		if entity.position.distance_squared_to(pointCurrent) < 1000:

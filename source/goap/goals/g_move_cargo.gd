@@ -11,7 +11,7 @@ func setup():
 	type = TYPE_NORMAL # Defines goal type. Definitions of enums are found in ancestor script
 	
 	# Define symbols by adding them to goals list with add_symbol(string symbol, bool value)
-	add_symbol("s_storage_full", true)
+	add_symbol("s_target_full", true)
 
 	return
 
@@ -23,7 +23,7 @@ func evaluate():
 	# If one symbol is not fulfilled, this goal may be used in planning
 	# Returns a dictionary of all of goal's symbols in worldstate if any is not satisfied, otherwise null
 	var dic = {
-		"s_storage_full": false
+		"s_target_full": !entity.target.hasSpace()
 	}
 
 	return dic

@@ -2,9 +2,9 @@
 
 [ext_resource path="res://goap/goap_agent.tscn" type="PackedScene" id=1]
 [ext_resource path="res://cars/taxi.tscn" type="PackedScene" id=2]
+[ext_resource path="res://resources/crates.png" type="Texture" id=3]
 [ext_resource path="res://workers/scripts/worker_base.gd" type="Script" id=4]
 [ext_resource path="res://goap/helpers/thoughts.gd" type="Script" id=5]
-[ext_resource path="res://resources/letters_box_spritesheet.png" type="Texture" id=6]
 
 [node name="Worker" type="Node2D"]
 script = ExtResource( 4 )
@@ -25,8 +25,9 @@ __meta__ = {
 
 [node name="Cargo" type="Sprite" parent="."]
 visible = false
-position = Vector2( 0.261452, -26.7888 )
-scale = Vector2( 0.063964, 0.0616415 )
-texture = ExtResource( 6 )
-vframes = 7
-hframes = 4
+position = Vector2( 0.261451, -34.1072 )
+scale = Vector2( 0.219062, 0.211108 )
+texture = ExtResource( 3 )
+vframes = 2
+hframes = 5
+frame = 9

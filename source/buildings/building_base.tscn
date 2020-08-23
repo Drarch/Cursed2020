@@ -1,8 +1,14 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://buildings/scripts/building_base.gd" type="Script" id=1]
 [ext_resource path="res://tileset/tileset_buildings_roofs.png" type="Texture" id=2]
 [ext_resource path="res://tileset/tileset_buildings_floors.png" type="Texture" id=3]
+[ext_resource path="res://resources/Kenney Future.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://resources/crates.png" type="Texture" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 39
+font_data = ExtResource( 4 )
 
 [node name="Building" type="StaticBody2D" groups=[
 "building",
@@ -22,3 +28,22 @@ position = Vector2( 1, -45 )
 texture = ExtResource( 2 )
 vframes = 6
 hframes = 8
+
+[node name="CargoView" type="Label" parent="."]
+visible = false
+margin_left = 4.96431
+margin_top = -30.5003
+margin_right = 48.9643
+margin_bottom = 14.4997
+custom_fonts/font = SubResource( 1 )
+text = "10"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="CargoView"]
+position = Vector2( -21.4087, 21.1281 )
+scale = Vector2( 0.24018, 0.24895 )
+texture = ExtResource( 5 )
+vframes = 2
+hframes = 5

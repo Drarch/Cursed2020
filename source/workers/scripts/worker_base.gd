@@ -4,6 +4,7 @@ class_name WorkerBase
 onready var cargoView: Sprite = $Cargo
 
 export(float, 1.0, 30.0, 1.0) var movementspeed: float = 10.0
+export(float, 0.90, 0.98, 0.01)var friction: float = 0.95
 
 var workplace#: BuildingBase = null
 
@@ -27,7 +28,7 @@ func hasCargo() -> bool:
 
 func updateCargo() -> void:
 	cargoView.visible = cargo > 0
-	cargoView.frame = randi() % 26
+	cargoView.frame = randi() % 10
 
 func takeCargo(amount: int = 1) -> void:
 	cargo += amount
