@@ -25,13 +25,13 @@ func set_car_type( id ):
 		0:
 			idx = randi()%Globals.car_civil.size()
 			texture = Globals.car_civil[idx]
-			get_parent().movementspeed = (10.0 + idx ) * rand_range(0.90,1.10)
-			get_parent().friction = 0.94 + rand_range(-0.005,0.005)
+			get_parent().movementspeed = (16.0 + idx ) * rand_range(0.90,1.10)
+			get_parent().friction = 0.93 + rand_range(-0.005,0.005)
 		1:
 			idx = randi()%Globals.car_cargo.size()
 			texture = Globals.car_cargo[idx]
-			get_parent().movementspeed = (16.0 + idx ) * rand_range(0.90,1.10)
-			get_parent().friction = 0.93 + rand_range(-0.005,0.005)
+			get_parent().movementspeed = (18.0 + idx ) * rand_range(0.90,1.10)
+			get_parent().friction = 0.92 + rand_range(-0.005,0.005)
 		2:
 			idx = randi()%Globals.car_lumber.size()
 			texture = Globals.car_lumber[idx]
