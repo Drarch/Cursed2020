@@ -34,6 +34,7 @@ func _ready() -> void:
 			$City.constructRandom()
 	
 	$City/Timer.queue_free()
+	$City/Timer2.queue_free()
 	$City/AudioStreamPlayer.queue_free()
 	$City.set_process(false)
 	$City.set_process_input(false)

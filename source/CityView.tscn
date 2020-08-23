@@ -26,9 +26,14 @@ position = Vector2( 512, 300 )
 [node name="Timer" type="Timer" parent="."]
 autostart = true
 
+[node name="Timer2" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
 volume_db = -10.0
 autoplay = true
 bus = "Music"
 [connection signal="timeout" from="Timer" to="." method="constructRandom"]
+[connection signal="timeout" from="Timer2" to="." method="grow_tree"]
