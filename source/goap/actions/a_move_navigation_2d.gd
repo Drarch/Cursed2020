@@ -71,8 +71,9 @@ func execute():
 		set_process(true)
 		moving = true
 		pointEnd = agent.actions_current[1].get_target_location()
-		_calculatePath(pointEnd)
-		pointEnd = path.back()
+		if pointEnd:
+			_calculatePath(pointEnd)
+			pointEnd = path.back()
 	
 
 	if (pointEnd == null):

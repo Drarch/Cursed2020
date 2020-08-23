@@ -111,8 +111,9 @@ func hasSpace() -> bool:
 	return capacity < maxCapacity
 
 func updateCargo() -> void:
-	cargoView.visible = capacity > 0
-	cargoView.text = str(capacity)
+	if cargoView:
+		cargoView.visible = capacity > 0
+		cargoView.text = str(capacity)
 
 func addCargo(amount: int = 1) -> void:
 	capacity += amount
