@@ -5,10 +5,10 @@
 [ext_resource path="res://resources/Kenney Future.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://Sad Town.ogg" type="AudioStream" id=4]
 
-[sub_resource type="StyleBoxFlat" id=2]
+[sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0, 0, 0, 0.501961 )
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=2]
 font_data = ExtResource( 3 )
 
 [node name="City" type="Node2D"]
@@ -31,8 +31,8 @@ position = Vector2( 512, 300 )
 [node name="Label" type="Label" parent="UI"]
 margin_right = 40.0
 margin_bottom = 14.0
-custom_styles/normal = SubResource( 2 )
-custom_fonts/font = SubResource( 1 )
+custom_styles/normal = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "Use middle mouse to zoom/move around"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -41,7 +41,6 @@ __meta__ = {
 [node name="Buildings" type="YSort" parent="."]
 
 [node name="Timer" type="Timer" parent="."]
-autostart = true
 
 [node name="Timer2" type="Timer" parent="."]
 wait_time = 0.5
