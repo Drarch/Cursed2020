@@ -110,6 +110,8 @@ func hireCargo(entity: Node2D) -> bool:
 	if cargo.size() < maxCargo:
 		cargo.append(entity)
 		entity.workplace = self
+		entity.source = self
+		entity.target = Globals.mainStorage
 		updateWorkplace()
 		return true
 

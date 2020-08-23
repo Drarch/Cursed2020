@@ -1,9 +1,12 @@
-[gd_scene format=2]
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://goap/actions/a_move_navigation_2d.gd" type="Script" id=1]
 
 [node name="GOAP_Agent" type="Node"]
 
 [node name="Actions" type="Node" parent="."]
 
-[node name="a_MoveNavigation2D" type="Node" parent="Actions"]
+[node name="a_move_navigation_2D" type="Node" parent="Actions"]
+script = ExtResource( 1 )
 
 [node name="Goals" type="Node" parent="."]
