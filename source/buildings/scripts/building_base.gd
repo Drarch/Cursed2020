@@ -150,6 +150,7 @@ func spawnWorker(workerType: int) -> Node2D:
 	if worker:
 		self.get_parent().add_child(worker)
 		worker.position = self.position
+		worker.get_node("car").set_car_type( workerType )
 		Globals.workers += 1
 
 	return worker
