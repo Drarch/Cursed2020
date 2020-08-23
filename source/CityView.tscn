@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://CityMap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://CityView.gd" type="Script" id=2]
 [ext_resource path="res://resources/Kenney Future.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://Sad Town.ogg" type="AudioStream" id=4]
 [ext_resource path="res://buildings/building_storage_main.tscn" type="PackedScene" id=5]
+[ext_resource path="res://buildings/building_storage.tscn" type="PackedScene" id=6]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0, 0, 0, 0.501961 )
@@ -45,6 +46,9 @@ __meta__ = {
 [node name="StorageMain" parent="Buildings" instance=ExtResource( 5 )]
 position = Vector2( 53.6913, 1454.49 )
 capacity = 5
+
+[node name="Storage" parent="Buildings" instance=ExtResource( 6 )]
+position = Vector2( -659.442, 1751.8 )
 
 [node name="Timer" type="Timer" parent="."]
 
