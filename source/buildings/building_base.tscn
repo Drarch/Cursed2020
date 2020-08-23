@@ -1,12 +1,17 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://buildings/scripts/building_base.gd" type="Script" id=1]
 [ext_resource path="res://tileset/tileset_buildings_roofs.png" type="Texture" id=2]
 [ext_resource path="res://tileset/tileset_buildings_floors.png" type="Texture" id=3]
 [ext_resource path="res://buildings/construction_finished.wav" type="AudioStream" id=4]
 [ext_resource path="res://resources/crates.png" type="Texture" id=5]
+[ext_resource path="res://resources/Kenney Future.ttf" type="DynamicFontData" id=6]
 
-[sub_resource type="AudioStreamRandomPitch" id=1]
+[sub_resource type="DynamicFont" id=1]
+size = 35
+font_data = ExtResource( 6 )
+
+[sub_resource type="AudioStreamRandomPitch" id=2]
 audio_stream = ExtResource( 4 )
 
 [node name="Building" type="StaticBody2D" groups=[
@@ -25,9 +30,8 @@ hframes = 9
 [node name="Roof" type="Sprite" parent="."]
 position = Vector2( 1, -45 )
 texture = ExtResource( 2 )
-vframes = 7
+vframes = 6
 hframes = 8
-frame = 35
 
 [node name="CargoView" type="Label" parent="."]
 visible = false
@@ -35,6 +39,7 @@ margin_left = 4.96431
 margin_top = -30.5003
 margin_right = 48.9643
 margin_bottom = 14.4997
+custom_fonts/font = SubResource( 1 )
 text = "100"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -48,5 +53,4 @@ vframes = 2
 hframes = 5
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = SubResource( 1 )
-volume_db = -10.0
+stream = SubResource( 2 )
