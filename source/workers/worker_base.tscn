@@ -31,5 +31,3 @@ texture = ExtResource( 3 )
 vframes = 2
 hframes = 5
 frame = 9
-
-[editable path="GOAP_Agent"]

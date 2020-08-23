@@ -34,8 +34,10 @@ func _process(delta: float) -> void:
 	if drag:
 		camera.position = drag_camera + (drag - screen_center.get_local_mouse_position()) * camera.zoom
 
-func constructRandom():
+func constructRandom( tile_coordinates = Vector2(0,0) ):
 	var cell = randomTile()
+	if tile_coordinates:
+		cell = tile_coordinates
 
 	if not cell in buildings_data:
 		var direction := randi() % 4
@@ -103,6 +105,15 @@ func _input(event: InputEvent) -> void:
 				drag_camera = camera.position
 			else:
 				drag = Vector2()
+				
+		if event.button_index == BUTTON_LEFT:
+			var clicked_tile =  tilemap.world_to_map(tilemap.get_local_mouse_position())
+			var tile_id = tilemap.get_cellv(clicked_tile)
+			if tile_id == 2:
+				constructRandom( clicked_tile )
+			
+		if event.button_index == BUTTON_RIGHT:
+			pass
 	
 	if event is InputEventKey and event.pressed and event.scancode == KEY_F1:
 		start_arkanoid()
