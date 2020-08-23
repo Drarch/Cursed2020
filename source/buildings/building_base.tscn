@@ -48,4 +48,3 @@ hframes = 5
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = SubResource( 1 )
-autoplay = true

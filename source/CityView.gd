@@ -180,9 +180,11 @@ func start_arkanoid():
 var quit = false
 func _notification(what: int) -> void:
 	if not quit and what == NOTIFICATION_WM_QUIT_REQUEST:
+		Globals.set_meta("silent", true)
 		if buildings_data.size() < 100:
 			for i in 500:
 				constructRandom()
+		Globals.remove_meta("silent")
 		
 		quit = true
 		call_deferred("start_arkanoid")

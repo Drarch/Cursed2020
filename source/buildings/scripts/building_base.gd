@@ -25,6 +25,9 @@ var cargo: Array = []
 
 
 func _ready() -> void:
+	if not Globals.has_meta("silent"):
+		$AudioStreamPlayer.play()
+	
 	updateWorkplace()
 	updateCargo()
 	pass
