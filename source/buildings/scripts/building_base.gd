@@ -7,21 +7,26 @@ const FLOOR_DIRECTIONS := [0, 1, 0, 1, 2, 3, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0 , 1
 const WALL_DIRECTIONS := [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, -1, -1, -1, -1, -1, -1, -1, -1]
 const ROOF_DIRECTIONS := [-1, -1, -1, -1, 0, 1, 3, 2,0, 1, 3, 2, 0, 1, 3, 2, 0 , 1, 3, 2, 0, 1, 3, 2, 0, 1, 3, 2, 0, 1, 3, 2, 0, 1, 3, 2, 0, 1,3, 2, 0, -1, -1, -1, -1, -1, -1, -1]
 
+
 onready var roof := $Roof as Sprite
+onready var cargoView: Label = $CargoView
 
 var direction: int
 
 export(int, 0, 20) var maxEmployers: int = 0
 export(int, 0, 20) var maxCargo: int = 0
 
+export(int, 0, 100) var maxCapacity: int = 10
+export(int, 0, 100) var capacity: int = 0
+
 export(WorkerType) var employerType: int = WorkerType.UNEMPOLYED
 var employers: Array = []
 var cargo: Array = []
 
 
-
 func _ready() -> void:
 	updateWorkplace()
+	updateCargo()
 	pass
 
 func increase():
@@ -94,6 +99,29 @@ func generateWorker():
 			hireCargo(worker)
 		else:
 			hireEmploye(worker)
+
+
+func hasCargo() -> bool:
+	return capacity > 0
+
+func hasSpace() -> bool:
+	return capacity < maxCapacity
+
+func updateCargo() -> void:
+	cargoView.visible = capacity > 0
+	cargoView.text = str(capacity)
+
+func addCargo(amount: int = 1) -> void:
+	capacity += amount
+	updateCargo()
+
+func subCargo(amount: int = 1) -> bool:
+	if amount <= capacity:
+		capacity -= min(amount, capacity)
+		updateCargo()
+		return true
+
+	return false
 
 
 

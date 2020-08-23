@@ -16,6 +16,9 @@ script = ExtResource( 7 )
 [node name="car" parent="." index="0"]
 modulate = Color( 0.631373, 0, 0, 1 )
 
+[node name="g_get_cargo" type="Node" parent="car" index="0"]
+script = ExtResource( 9 )
+
 [node name="GOAP_Agent" parent="." index="1"]
 script = ExtResource( 4 )
 
@@ -33,8 +36,5 @@ script = ExtResource( 2 )
 
 [node name="g_move_cargo" type="Node" parent="GOAP_Agent/Goals" index="1"]
 script = ExtResource( 8 )
-
-[node name="g_get_cargo" type="Node" parent="GOAP_Agent/Goals" index="2"]
-script = ExtResource( 9 )
 
 [editable path="GOAP_Agent"]
