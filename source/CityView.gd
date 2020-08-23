@@ -95,7 +95,8 @@ func _input(event: InputEvent) -> void:
 func randomTile() -> Vector2:
 	var cells := tilemap.get_used_cells()
 	var cell := cells[randi() % cells.size()] as Vector2
-	while tilemap.get_cellv(cell) != 2:
+	
+	while not tilemap.get_cellv(cell) in [2,3]:
 		cell = cells[randi() % cells.size()]
 
 	return cell
@@ -104,6 +105,7 @@ func randomTileGlobal() -> Vector2:
 	var cell = randomTile()
 
 	return tilemap.map_to_world(cell)
+
 
 func start_arkanoid():
 	var root := get_parent()
