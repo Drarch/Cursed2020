@@ -21,6 +21,7 @@ tile_data = PoolIntArray( -196608, 1, 0, -196607, 0, 0, -196606, 0, 131077, -196
 position = Vector2( 0, 1200 )
 rotating = true
 current = true
+zoom = Vector2( 2, 2 )
 
 [node name="UI" type="CanvasLayer" parent="."]
 
