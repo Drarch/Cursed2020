@@ -47,8 +47,10 @@ func get_target_location():
 	# 	so TYPE_MOVEMENT actions should only be planned to occur before actions that need the agent to be at a 
 	# 	certain location and therefore are able to return a position to move to
 	site = entity.target
-
-	return site.position
+	if site:
+		return site.position
+	else:
+		return null
 
 func execute():
 	# Manipulate the world through this code

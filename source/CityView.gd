@@ -55,6 +55,7 @@ func constructSpecific( cell:Vector2, building_id:int ):
 		if building_id == 2:
 			building = preload("res://buildings/building_base.tscn").instance() as Node2D
 			building.randView()
+
 		else:
 			building = preload("res://buildings/building_storage.tscn").instance() as Node2D
 			building.setView()
@@ -64,6 +65,9 @@ func constructSpecific( cell:Vector2, building_id:int ):
 		buildings.add_child(building)
 		
 		constructOnCell(building, cell)
+		if building_id == 2:
+			if Globals.maxWorkers > Globals.workers:
+				buildings_data[cell].spawnWorker(0)
 
 func constructRandom( tile_coordinates = Vector2(0,0) ):
 	var cell = randomTile()

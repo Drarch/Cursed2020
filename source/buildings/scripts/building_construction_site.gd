@@ -11,3 +11,6 @@ func build():
 	Globals.cityView.constructSpecific( cell, constructionType )
 	Globals.removeConstructionSite(self)
 	queue_free()
+
+func increase():
+	build()

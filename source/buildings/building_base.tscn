@@ -30,15 +30,14 @@ hframes = 9
 [node name="Roof" type="Sprite" parent="."]
 position = Vector2( 1, -45 )
 texture = ExtResource( 2 )
-vframes = 6
+vframes = 7
 hframes = 8
 
 [node name="CargoView" type="Label" parent="."]
-visible = false
-margin_left = 4.96431
-margin_top = -30.5003
-margin_right = 48.9643
-margin_bottom = 14.4997
+margin_left = 20.9643
+margin_top = -78.5003
+margin_right = 95.9643
+margin_bottom = -33.5003
 custom_fonts/font = SubResource( 1 )
 text = "100"
 __meta__ = {
