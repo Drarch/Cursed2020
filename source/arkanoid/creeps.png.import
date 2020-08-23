@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/letters_box_spritesheet.png-7283040f617e176a10c6fb9541701a73.stex"
+path="res://.import/creeps.png-3edb3a6c9dcfa195e511b4db7d640633.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/letters_box_spritesheet.png"
-dest_files=[ "res://.import/letters_box_spritesheet.png-7283040f617e176a10c6fb9541701a73.stex" ]
+source_file="res://arkanoid/creeps.png"
+dest_files=[ "res://.import/creeps.png-3edb3a6c9dcfa195e511b4db7d640633.stex" ]
 
 [params]
 
@@ -20,8 +20,8 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
-flags/mipmaps=true
+flags/filter=true
+flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
 process/fix_alpha_border=true
