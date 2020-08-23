@@ -1,7 +1,7 @@
 extends Node2D
 class_name BuildingBase
 
-enum WorkerType { UNEMPOLYED, CARGO }
+enum WorkerType { UNEMPOLYED, CARGO, LUMBER, BUILDER }
 
 const FLOOR_DIRECTIONS := [0, 1, 0, 1, 2, 3, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0 , 1, 0, 1, 0, 1, 0, 1, 2, 3, 0, 0, 1, 3, 2, 2, 3, 0, 1, 2, 3, 0, 1, 0, 0, 1, 1, 0, 1]
 const WALL_DIRECTIONS := [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, -1, -1, -1, -1, -1, -1, -1, -1]
@@ -156,6 +156,7 @@ func hireEmploye(entity: Node2D) -> bool:
 	if employers.size() < maxEmployers:
 		employers.append(entity)
 		entity.workplace = self
+		entity.target = self
 		updateWorkplace()
 		return true
 
@@ -176,6 +177,8 @@ func spawnWorker(workerType: int) -> Node2D:
 			worker = preload("res://workers/worker_unemployed.tscn").instance() as Node2D
 		WorkerType.CARGO:
 			worker = preload("res://workers/worker_cargo.tscn").instance() as Node2D
+		WorkerType.LUMBER:
+			worker = preload("res://workers/worker_lumber.tscn").instance() as Node2D
 
 	if worker:
 		self.get_parent().add_child(worker)

@@ -73,7 +73,7 @@ func grow_tree():
 		tree.position = tilemap.map_to_world(cell) + Vector2(0, 34) + Vector2(rand_range(-26,26),rand_range(-26,26)) 
 		buildings_data[cell] = tree
 		buildings.add_child(tree)
-	else:
+	elif buildings_data[cell] is ResourceBase:
 		buildings_data[cell].increase()
 
 func constructOnCell(building: BuildingBase, cell: Vector2) -> void:

@@ -15,7 +15,7 @@ var navigation: Navigation2D
 var mainStorage: BuildingBase
 
 var workplaces: Array = []
-
+var resources: Array = []
 
 
 func _ready() -> void:
@@ -40,3 +40,10 @@ func addWorkplace(_building: BuildingBase) -> void:
 
 func removeWorkplace(_building: BuildingBase) -> void:
 	workplaces.erase(_building)
+
+func addResource(_resources: ResourceBase) -> void:
+	if !resources.has(_resources):
+		resources.append(_resources)
+
+func removeResources(_resources: ResourceBase) -> void:
+	resources.erase(_resources)
