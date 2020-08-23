@@ -14,6 +14,7 @@ script = ExtResource( 2 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = SubResource( 1 )
+volume_db = -10.0
 autoplay = true
 
 [node name="Timer" type="Timer" parent="."]

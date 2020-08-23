@@ -25,8 +25,9 @@ hframes = 9
 [node name="Roof" type="Sprite" parent="."]
 position = Vector2( 1, -45 )
 texture = ExtResource( 2 )
-vframes = 6
+vframes = 7
 hframes = 8
+frame = 35
 
 [node name="CargoView" type="Label" parent="."]
 visible = false
@@ -48,3 +49,4 @@ hframes = 5
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = SubResource( 1 )
+volume_db = -10.0

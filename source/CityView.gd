@@ -50,11 +50,17 @@ func constructSpecific( cell:Vector2, building_id:int ):
 			direction = 2
 		elif tilemap.get_cellv(cell + Vector2.LEFT) == 0:
 			direction = 3
-		
-		var building := preload("res://buildings/building_base.tscn").instance() as Node2D
+			
+		var building:Node2D
+		if building_id == 2:
+			building = preload("res://buildings/building_base.tscn").instance() as Node2D
+			building.randView()
+		else:
+			building = preload("res://buildings/building_storage.tscn").instance() as Node2D
+			building.setView()
+			
 		building.direction = direction
 		building.get_node('AudioStreamPlayer').playing = true
-		building.randView()
 		buildings.add_child(building)
 		
 		constructOnCell(building, cell)
