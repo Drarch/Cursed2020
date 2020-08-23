@@ -60,6 +60,22 @@ func constructRandom():
 	if Globals.maxWorkers > Globals.workers:
 		buildings_data[cell].spawnWorker(0)
 
+func grow_tree():
+	var cells := tilemap.get_used_cells()
+	var cell := cells[randi() % cells.size()] as Vector2
+	
+	while tilemap.get_cellv(cell) != 1:
+		cell = cells[randi() % cells.size()]
+	
+	
+	if not cell in buildings_data:
+		var tree := preload("res://buildings/tree.tscn").instance() as Node2D
+		tree.position = tilemap.map_to_world(cell) + Vector2(0, 34) + Vector2(rand_range(-26,26),rand_range(-26,26)) 
+		buildings_data[cell] = tree
+		buildings.add_child(tree)
+	else:
+		buildings_data[cell].increase()
+
 func constructOnCell(building: BuildingBase, cell: Vector2) -> void:
 	building.position = tilemap.map_to_world(cell) + Vector2(0, 34)
 	buildings_data[cell] = building
@@ -96,7 +112,7 @@ func randomTile() -> Vector2:
 	var cells := tilemap.get_used_cells()
 	var cell := cells[randi() % cells.size()] as Vector2
 	
-	while not tilemap.get_cellv(cell) in [2,3]:
+	while not tilemap.get_cellv(cell) == 2:
 		cell = cells[randi() % cells.size()]
 
 	return cell

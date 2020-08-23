@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://buildings/scripts/tree.gd" type="Script" id=1]
+[ext_resource path="res://sprites/tree.png" type="Texture" id=2]
+
+[node name="Tree" type="StaticBody2D" groups=[
+"building",
+]]
+script = ExtResource( 1 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( -7.89541, -0.04739, 0.153381, 5.80819, 7.70206, -0.018856, 0.0209503, -7.0378 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0.117981, -19.5854 )
+texture = ExtResource( 2 )
