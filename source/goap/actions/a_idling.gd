@@ -46,8 +46,7 @@ func get_target_location():
 	# 	certain location and therefore are able to return a position to move to
 	var navigation = Globals.navigation
 	
-	target = Globals.cityView.randomTileGlobal()
-
+	target = Globals.cityView.randomRoadTileGlobal() + Vector2(-64,0)
 	return target
 
 func execute():

@@ -93,8 +93,18 @@ func construct(building: BuildingBase) -> void:
 
 func createConstructionSite(tile: Vector2) -> void:
 	var tile_id = tilemap.get_cellv(tile)
-	if tile_id == 2:
-		constructRandom( tile )
+	if tile_id in [2, 1]:
+		var site := preload("res://buildings/building_construction_site.tscn").instance() as Node2D
+		site.position = tilemap.map_to_world(tile) + Vector2(0, 34)
+		buildings.add_child(site)
+
+		if tile in buildings_data && buildings_data[tile] is ResourceBase:
+			buildings_data[tile].destroy()
+
+		if tile_id == 2:
+			buildings_data[tile] = site
+
+
 
 
 func constructExistingBuildings() -> void:
@@ -140,6 +150,20 @@ func randomTile() -> Vector2:
 
 	return cell
 
+func randomRoadTile() -> Vector2:
+	var cells := tilemap.get_used_cells()
+	var cell := cells[randi() % cells.size()] as Vector2
+	
+	while not tilemap.get_cellv(cell) == 0:
+		cell = cells[randi() % cells.size()]
+
+	return cell
+	
+func randomRoadTileGlobal() -> Vector2:
+	var cell = randomRoadTile()
+
+	return tilemap.map_to_world(cell)
+	
 func randomTileGlobal() -> Vector2:
 	var cell = randomTile()
 

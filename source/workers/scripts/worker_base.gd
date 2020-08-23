@@ -38,3 +38,8 @@ func dropCargo(amount: int = 1) -> void:
 	cargo -= min(amount, cargo)
 	updateCargo()
 
+#func _draw():
+#	var path = $GOAP_Agent/Actions/a_move_navigation_2D.path
+#	for i in path.size()-1:
+#		draw_line(path[i]-position, path[i+1]-position, Color.black, 3 )
+#	draw_line(Vector2.ZERO, $GOAP_Agent/Actions/a_move_navigation_2D.final_destination - position, Color.red, 3 )
