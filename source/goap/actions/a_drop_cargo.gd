@@ -60,7 +60,8 @@ func execute():
 	#  - COMPLETED - Action's execution code has run successfully and the action is done executing
 
 	entity.dropCargo()
-	storage.addCargo()
+	if storage:
+		storage.addCargo()
 	return COMPLETED
 
 	
