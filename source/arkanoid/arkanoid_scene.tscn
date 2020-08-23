@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://arkanoid/paddle_02.png" type="Texture" id=1]
 [ext_resource path="res://arkanoid/arkanoid_scene.gd" type="Script" id=2]
@@ -163,6 +163,10 @@ tracks/2/keys = {
 "update": 1,
 "values": [ true, false ]
 }
+
+[sub_resource type="DynamicFont" id=19]
+size = 30
+font_data = ExtResource( 8 )
 
 [sub_resource type="GDScript" id=15]
 script/source = "extends Sprite
@@ -340,6 +344,15 @@ __meta__ = {
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer"]
 playback_speed = 8.0
 anims/POWERUP = SubResource( 14 )
+
+[node name="Score" type="Label" parent="CanvasLayer"]
+margin_right = 40.0
+margin_bottom = 14.0
+custom_fonts/font = SubResource( 19 )
+text = "SCORE 0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 339.411, 67.8823 )

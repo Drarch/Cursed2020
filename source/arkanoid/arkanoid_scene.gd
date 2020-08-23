@@ -1,8 +1,5 @@
 extends Node2D
 
-##todo wynik
-##todo particle gwiazdek
-
 const POWER_UP_NOCHANCE = 10
 
 onready var paddle := $Paddle as Node2D
@@ -10,6 +7,7 @@ onready var line := $PaddleLine as Line2D
 onready var particles := $Particles2D
 onready var label := $CanvasLayer/Label
 onready var ap := $CanvasLayer/AnimationPlayer as AnimationPlayer
+onready var scorelabel := $CanvasLayer/Score as Label
 
 onready var mushrooms_node := $CanvasLayer/ColorRect
 onready var creeps_node := $CanvasLayer/ColorRect2
@@ -19,6 +17,7 @@ var shake: int
 var tilemap: TileMap
 var city
 var balls: Array
+var score := 0
 
 var mushrooms: float
 var creeps: float
@@ -67,6 +66,7 @@ func _process(delta: float) -> void:
 	mushrooms_node.visible = mushrooms > 0
 	creeps -= delta
 	creeps_node.visible = creeps > 0
+	scorelabel.text = str("SCORE ", score)
 
 func up() -> Vector2:
 	return Vector2.UP.rotated(paddle.rotation)
@@ -80,6 +80,7 @@ func _on_Dead_body_entered(body: Node) -> void:
 		play_sample("res://arkanoid/call_for_backup.wav")
 
 func _on_Ball_hit(ball) -> void:
+	score += 1
 	partcl(ball.global_position)
 	shake = 20 + ball.explosion
 	
@@ -91,6 +92,7 @@ func _on_Ball_hit(ball) -> void:
 			if city.buildings_data[cell]:
 				partcl(city.buildings_data[cell].global_position)
 				city.buildings_data[cell].destroy()
+				score += 1
 	
 	if randi() % POWER_UP_NOCHANCE == 0:
 		var powerup := preload("res://arkanoid/powerup.tscn").instance()
