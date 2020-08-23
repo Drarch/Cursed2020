@@ -10,6 +10,8 @@ var drag: Vector2
 var drag_camera: Vector2
 var buildings_data: Dictionary
 
+export(int ,0 ,1000) var startEmployers: int = 10
+
 func _ready() -> void:
 	get_tree().set_auto_accept_quit(false)
 	
@@ -17,6 +19,9 @@ func _ready() -> void:
 	Globals.navigation = navigation
 
 	constructExistingBuildings()
+	
+	for i in range(startEmployers):
+		constructRandom()
 
 func _process(delta: float) -> void:
 	var screen_size := get_viewport().size
@@ -75,7 +80,7 @@ func grow_tree():
 		tree.position = tilemap.map_to_world(cell) + Vector2(0, 34) + Vector2(rand_range(-26,26),rand_range(-26,26)) 
 		buildings_data[cell] = tree
 		buildings.add_child(tree)
-	else:
+	elif buildings_data[cell] is ResourceBase:
 		buildings_data[cell].increase()
 
 func constructOnCell(building: BuildingBase, cell: Vector2) -> void:

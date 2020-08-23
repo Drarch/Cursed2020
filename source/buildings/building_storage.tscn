@@ -5,10 +5,12 @@
 
 [node name="Storage" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
-maxCargo = 2
+maxEmployers = 3
+maxCargo = 3
+employerType = 2
 
 [node name="Wall" parent="." index="1"]
-frame = 8
+frame = 10
 
 [node name="Roof" parent="." index="2"]
 frame = 8

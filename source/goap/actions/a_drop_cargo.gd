@@ -30,7 +30,7 @@ func evaluate():
 	# If returning true, the planner will consider this action for its current plan
 	# If returning false, the planner will not include this action in the plan for the currently inspected goal at all!
 
-	var result: bool = entity.source && entity.target && entity.target.hasSpace()
+	var result: bool = entity.target && entity.target.hasSpace()
 
 	return result
 

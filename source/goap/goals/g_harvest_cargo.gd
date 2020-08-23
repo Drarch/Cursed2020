@@ -6,12 +6,12 @@ func setup():
 	
 	# Called after setup_common()
 	
-	name = "g_move_cargo" # String to identify the goal from others after creation
-	priority = 2.0 # The higher this number, the more important the goal. Agent will always want to fulfill the goal with the highest priority first
+	name = "g_harvest_cargo" # String to identify the goal from others after creation
+	priority = 3.0 # The higher this number, the more important the goal. Agent will always want to fulfill the goal with the highest priority first
 	type = TYPE_NORMAL # Defines goal type. Definitions of enums are found in ancestor script
 	
 	# Define symbols by adding them to goals list with add_symbol(string symbol, bool value)
-	add_symbol("s_target_full", true)
+	add_symbol("s_has_cargo", true)
 
 	return
 
@@ -23,8 +23,8 @@ func evaluate():
 	# If one symbol is not fulfilled, this goal may be used in planning
 	# Returns a dictionary of all of goal's symbols in worldstate if any is not satisfied, otherwise null
 	var dic = {
-		"s_target_full": !entity.target.hasSpace(),
 		"s_has_cargo": entity.hasCargo()
+		, "s_has_source": entity.source != null
 	}
 
 	return dic
