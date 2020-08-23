@@ -6,11 +6,13 @@ var path := []
 
 var pointStart = null
 var pointEnd = null
-var pointCurrent = null
+var pointCurrent = Vector2.ZERO
 
 var moving: bool = false
 
 var velocity := Vector2.ZERO
+
+var final_destination := Vector2.ZERO
 
 func setup():
 	# Called after setup_common()
@@ -32,7 +34,6 @@ func reset():
 	pointEnd = null
 	moving = false
 	path.clear()
-
 	return
 
 func evaluate():
@@ -106,17 +107,18 @@ func _process(delta):
 
 #		player.position += player.position.direction_to(points.front()) * entity.movementspeed * delta
 		pointCurrent = path.front()
-#
+#		entity.update()
 #		var xx = lerp(pointStart.x, pointCurrent.x, min(1.0, entity.movementspeed * delta / max(pointStart.distance_to(pointCurrent),1)))
 #		var yy = lerp(pointStart.y, pointCurrent.y, min(1.0, entity.movementspeed * delta / max(pointStart.distance_to(pointCurrent),1)))
-		velocity += entity.global_position.direction_to(pointCurrent) * entity.movementspeed * delta
-		velocity *= entity.friction
-		entity.global_position += velocity
+
 		
+		velocity *= entity.friction
+		velocity += entity.global_position.direction_to(pointCurrent) * entity.movementspeed * delta
+		entity.global_position += velocity
+
 		if entity.position.distance_squared_to(pointCurrent) < 1000:
 			path.pop_front()
-	
-
 
 func _calculatePath(destination: Vector2) -> void:
+	final_destination = destination
 	path = Globals.navigation.get_simple_path(entity.position, destination, false)

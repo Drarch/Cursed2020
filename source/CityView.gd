@@ -110,7 +110,8 @@ func _input(event: InputEvent) -> void:
 			var clicked_tile =  tilemap.world_to_map(tilemap.get_local_mouse_position())
 			var tile_id = tilemap.get_cellv(clicked_tile)
 			if tile_id == 2:
-				constructRandom( clicked_tile )
+				if !buildings_data.has(clicked_tile):
+					constructRandom( clicked_tile )
 			
 		if event.button_index == BUTTON_RIGHT:
 			pass
@@ -128,6 +129,20 @@ func randomTile() -> Vector2:
 
 	return cell
 
+func randomRoadTile() -> Vector2:
+	var cells := tilemap.get_used_cells()
+	var cell := cells[randi() % cells.size()] as Vector2
+	
+	while not tilemap.get_cellv(cell) == 0:
+		cell = cells[randi() % cells.size()]
+
+	return cell
+	
+func randomRoadTileGlobal() -> Vector2:
+	var cell = randomRoadTile()
+
+	return tilemap.map_to_world(cell)
+	
 func randomTileGlobal() -> Vector2:
 	var cell = randomTile()
 
