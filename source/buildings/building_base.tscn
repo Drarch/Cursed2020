@@ -3,7 +3,7 @@
 [ext_resource path="res://buildings/scripts/building_base.gd" type="Script" id=1]
 [ext_resource path="res://tileset/tileset_buildings_roofs.png" type="Texture" id=2]
 [ext_resource path="res://tileset/tileset_buildings_floors.png" type="Texture" id=3]
-[ext_resource path="res://buildings/place_building.wav" type="AudioStream" id=4]
+[ext_resource path="res://buildings/construction_finished.wav" type="AudioStream" id=4]
 [ext_resource path="res://resources/crates.png" type="Texture" id=5]
 
 [sub_resource type="AudioStreamRandomPitch" id=1]
