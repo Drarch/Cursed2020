@@ -17,6 +17,9 @@ func _ready() -> void:
 	Globals.navigation = navigation
 
 	constructExistingBuildings()
+	
+	for i in range(10):
+		constructRandom()
 
 func _process(delta: float) -> void:
 	var screen_size := get_viewport().size
