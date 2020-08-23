@@ -53,10 +53,16 @@ func _ready():
 		dir.list_dir_begin()
 		var filename = dir.get_next()
 		while (filename != ""):
-			if (filename.begins_with("a_") && filename.ends_with(".gd")):
-				filename = filename.get_basename()
-				cache_actions[filename] = "res://goap/actions/" + filename + ".gd"
-				if (debug_show_cache_actions): print("GOAP PRELOAD: Added action " + str(filename))
+			if OS.has_feature("standalone"):
+				if (filename.begins_with("a_") && filename.ends_with(".gdc")):
+					filename = filename.get_basename()
+					cache_actions[filename] = "res://goap/actions/" + filename + ".gdc"
+					if (debug_show_cache_actions): print("GOAP PRELOAD: Added action " + str(filename))
+			else:
+				if (filename.begins_with("a_") && filename.ends_with(".gd")):
+					filename = filename.get_basename()
+					cache_actions[filename] = "res://goap/actions/" + filename + ".gd"
+					if (debug_show_cache_actions): print("GOAP PRELOAD: Added action " + str(filename))
 			
 			filename = dir.get_next()
 
@@ -71,10 +77,16 @@ func _ready():
 		dir.list_dir_begin()
 		var filename = dir.get_next()
 		while (filename != ""):
-			if (filename.begins_with("g_") && filename.ends_with(".gd")):
-				filename = filename.get_basename()
-				cache_goals[filename] = "res://goap/goals/" + filename + ".gd"
-				if (debug_show_cache_goals): print("GOAP PRELOAD: Added goal " + str(filename))
+			if OS.has_feature("standalone"):
+				if (filename.begins_with("g_") && filename.ends_with(".gdc")):
+					filename = filename.get_basename()
+					cache_goals[filename] = "res://goap/goals/" + filename + ".gdc"
+					if (debug_show_cache_goals): print("GOAP PRELOAD: Added goal " + str(filename))
+			else:
+				if (filename.begins_with("g_") && filename.ends_with(".gd")):
+					filename = filename.get_basename()
+					cache_goals[filename] = "res://goap/goals/" + filename + ".gd"
+					if (debug_show_cache_goals): print("GOAP PRELOAD: Added goal " + str(filename))
 			filename = dir.get_next()
 		dir.list_dir_end()
 	else:
@@ -145,7 +157,7 @@ func setup():
 			
 			cache_actions_from_effect_value[valuekey].append(action_name)
 			if (debug_show_cache_actions_from_effect_value): print("GOAP PRELOAD: Added '" + action_name + "' to cache_actions_from_effect_value[" + valuekey + "]")
-
+				
 		# Loop through all preconditions
 		symbols = action.preconditions
 		for symbol in symbols.keys():

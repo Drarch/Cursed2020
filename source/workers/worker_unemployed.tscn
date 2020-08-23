@@ -9,6 +9,9 @@
 
 [node name="Unemployed" instance=ExtResource( 1 )]
 
+[node name="g_idle" type="Node" parent="car" index="0"]
+script = ExtResource( 2 )
+
 [node name="GOAP_Agent" parent="." index="1"]
 script = ExtResource( 4 )
 
@@ -18,10 +21,7 @@ script = ExtResource( 3 )
 [node name="a_getting_job" type="Node" parent="GOAP_Agent/Actions" index="2"]
 script = ExtResource( 6 )
 
-[node name="g_idle" type="Node" parent="GOAP_Agent/Goals" index="0"]
-script = ExtResource( 2 )
-
-[node name="g_getJob" type="Node" parent="GOAP_Agent/Goals" index="1"]
+[node name="g_get_job" type="Node" parent="GOAP_Agent/Goals" index="0"]
 script = ExtResource( 5 )
 
 [editable path="GOAP_Agent"]

@@ -21,6 +21,7 @@ var cargo: int = 0
 
 
 func hasJob() -> bool:
+	return false
 	return workplace != null
 
 func hasCargo() -> bool:

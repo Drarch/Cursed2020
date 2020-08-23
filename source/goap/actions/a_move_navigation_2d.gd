@@ -21,7 +21,7 @@ func setup():
 	type = TYPE_MOVEMENT # See ancestor script for type descriptions
 	
 	# Movement - use add_movement(string id)
-	add_movement("navigation2d")
+	add_movement("a_move_navigation_2D")
 	
 	# Preconditions - use add_precondition(string symbol, bool value)
 	

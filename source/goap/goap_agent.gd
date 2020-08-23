@@ -283,6 +283,8 @@ func build_graph(action_inspected, worldstate, goalstate, action_pool, list_clos
 		entity.get_node("Thoughts").think("I have CALLED build_graph(ACTION_INSPECTED: "\
 		+ action_name + "; WORLDSTATE: " + str(worldstate) + "; GOALSTATE: " + str(goalstate)\
 		+ "; ACTION_POOL: " + pool_string + "; LIST_CLOSED: " + closed_string + ")")
+
+		# print(goalstate, " - ", worldstate, ": ", compare_states(goalstate, worldstate))
 	# Nesting itself, this is the A* part
 	# Takes following arguments:
 	# node - The currently inspected action_node
@@ -294,6 +296,7 @@ func build_graph(action_inspected, worldstate, goalstate, action_pool, list_clos
 	# A node saves its open and closed list
 
 	# Look at node's state. If its state corresponds to the overall goalstate, the plan is complete
+	# print(action_inspected.name, ": ", compare_states(goalstate, worldstate))
 	if (compare_states(goalstate, worldstate)):
 		# worldstate has all symbols that goalstate has and all common symbols have the same value -> we found a valid path
 		# Since we always check the child with the best value first (lowest cost), we have found not only a valid path, but the best valid path
@@ -336,6 +339,7 @@ func build_graph(action_inspected, worldstate, goalstate, action_pool, list_clos
 			var effect_action_names = {}
 			if (GOAP_CACHE.cache_actions_from_effect_value.has(valuekey)):
 				effect_action_names = GOAP_CACHE.cache_actions_from_effect_value[valuekey] # Returns a cached list of action names that have an effect that sets this symbol to the desired state (as held in current_worldstate)
+
 			# Filter out actions that
 			#  - do not have the effect we are looking for
 			#  - are not of type repeatable and already on the closed list

@@ -12,6 +12,7 @@ func setup():
 	
 	# Define symbols by adding them to goals list with add_symbol(string symbol, bool value)
 	add_symbol("s_hasJob", true)
+	# print(goals)
 
 	return
 
