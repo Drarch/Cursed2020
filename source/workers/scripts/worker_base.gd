@@ -28,7 +28,7 @@ func hasCargo() -> bool:
 
 func updateCargo() -> void:
 	cargoView.visible = cargo > 0
-	cargoView.frame = randi() % 26
+	cargoView.frame = randi() % 10
 
 func takeCargo(amount: int = 1) -> void:
 	cargo += amount
