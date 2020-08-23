@@ -178,6 +178,7 @@ func spawnWorker(workerType: int) -> Node2D:
 	match workerType:
 		WorkerType.UNEMPOLYED:
 			worker = preload("res://workers/worker_unemployed.tscn").instance() as Node2D
+			Globals.workers += 1
 		WorkerType.CARGO:
 			worker = preload("res://workers/worker_cargo.tscn").instance() as Node2D
 		WorkerType.LUMBER:
@@ -189,6 +190,5 @@ func spawnWorker(workerType: int) -> Node2D:
 		self.get_parent().add_child(worker)
 		worker.position = self.position
 		worker.get_node("car").set_car_type( workerType )
-		Globals.workers += 1
 
 	return worker
