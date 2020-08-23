@@ -2,14 +2,10 @@
 
 [ext_resource path="res://CityMap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://CityView.gd" type="Script" id=2]
-[ext_resource path="res://resources/Kenney Future.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://buildings/building_storage.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Sad Town.ogg" type="AudioStream" id=4]
-
-[sub_resource type="StyleBoxFlat" id=1]
-bg_color = Color( 0, 0, 0, 0.501961 )
-
-[sub_resource type="DynamicFont" id=2]
-font_data = ExtResource( 3 )
+[ext_resource path="res://buildings/building_storage_main.tscn" type="PackedScene" id=5]
+[ext_resource path="res://workers/worker_unemployed.tscn" type="PackedScene" id=6]
 
 [node name="City" type="Node2D"]
 script = ExtResource( 2 )
@@ -22,23 +18,36 @@ script = ExtResource( 2 )
 position = Vector2( 0, 1200 )
 rotating = true
 current = true
+zoom = Vector2( 2, 2 )
 
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="ScreenCenter" type="Node2D" parent="UI"]
 position = Vector2( 512, 300 )
 
-[node name="Label" type="Label" parent="UI"]
-margin_right = 40.0
-margin_bottom = 14.0
-custom_styles/normal = SubResource( 1 )
-custom_fonts/font = SubResource( 2 )
-text = "Use middle mouse to zoom/move around"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="Buildings" type="YSort" parent="."]
+
+[node name="Storage" parent="Buildings" instance=ExtResource( 3 )]
+position = Vector2( -843.468, 1652.55 )
+maxCargo = 1
+
+[node name="StorageMain" parent="Buildings" instance=ExtResource( 5 )]
+position = Vector2( -133.971, 1879.2 )
+
+[node name="Unemployed" parent="Buildings" instance=ExtResource( 6 )]
+position = Vector2( -589.476, 1710.19 )
+
+[node name="Unemployed2" parent="Buildings" instance=ExtResource( 6 )]
+position = Vector2( -589.476, 1710.19 )
+
+[node name="Unemployed3" parent="Buildings" instance=ExtResource( 6 )]
+position = Vector2( -589.476, 1710.19 )
+
+[node name="Unemployed4" parent="Buildings" instance=ExtResource( 6 )]
+position = Vector2( -589.476, 1710.19 )
+
+[node name="Unemployed5" parent="Buildings" instance=ExtResource( 6 )]
+position = Vector2( -589.476, 1710.19 )
 
 [node name="Timer" type="Timer" parent="."]
 

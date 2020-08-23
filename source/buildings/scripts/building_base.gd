@@ -179,6 +179,8 @@ func spawnWorker(workerType: int) -> Node2D:
 			worker = preload("res://workers/worker_cargo.tscn").instance() as Node2D
 		WorkerType.LUMBER:
 			worker = preload("res://workers/worker_lumber.tscn").instance() as Node2D
+		WorkerType.BUILDER:
+			worker = preload("res://workers/worker_builder.tscn").instance() as Node2D
 
 	if worker:
 		self.get_parent().add_child(worker)
