@@ -91,6 +91,12 @@ func construct(building: BuildingBase) -> void:
 	var cell = tilemap.world_to_map(building.position)
 	constructOnCell(building, cell)
 
+func createConstructionSite(tile: Vector2) -> void:
+	var tile_id = tilemap.get_cellv(tile)
+	if tile_id == 2:
+		constructRandom( tile )
+
+
 func constructExistingBuildings() -> void:
 	for b in buildings.get_children():
 		if b is BuildingBase:
@@ -112,16 +118,17 @@ func _input(event: InputEvent) -> void:
 				drag = Vector2()
 				
 		if event.button_index == BUTTON_LEFT:
-			var clicked_tile =  tilemap.world_to_map(tilemap.get_local_mouse_position())
-			var tile_id = tilemap.get_cellv(clicked_tile)
-			if tile_id == 2:
-				constructRandom( clicked_tile )
+			inputConstruct()
 			
 		if event.button_index == BUTTON_RIGHT:
 			pass
 	
 	if event is InputEventKey and event.pressed and event.scancode == KEY_F1:
 		start_arkanoid()
+
+func inputConstruct() -> void:
+	var clicked_tile = tilemap.world_to_map(tilemap.get_local_mouse_position())
+	createConstructionSite(clicked_tile)
 
 
 func randomTile() -> Vector2:

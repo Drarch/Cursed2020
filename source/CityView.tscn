@@ -28,7 +28,6 @@ position = Vector2( 512, 300 )
 
 [node name="Storage" parent="Buildings" instance=ExtResource( 3 )]
 position = Vector2( -843.468, 1652.55 )
-maxCargo = 1
 
 [node name="StorageMain" parent="Buildings" instance=ExtResource( 5 )]
 position = Vector2( -133.971, 1879.2 )
