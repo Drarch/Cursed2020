@@ -53,6 +53,7 @@ func constructSpecific( cell:Vector2, building_id:int ):
 		
 		var building := preload("res://buildings/building_base.tscn").instance() as Node2D
 		building.direction = direction
+		building.get_node('AudioStreamPlayer').playing = true
 		building.randView()
 		buildings.add_child(building)
 		
