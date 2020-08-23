@@ -44,6 +44,14 @@ func removeWorkplace(_building: BuildingBase) -> void:
 func addResource(_resources: ResourceBase) -> void:
 	if !resources.has(_resources):
 		resources.append(_resources)
-
+	
 func removeResources(_resources: ResourceBase) -> void:
 	resources.erase(_resources)
+	
+func addConstructionSite(_cosnstruction) -> void:
+	if !constructionSites.has(_cosnstruction):
+		constructionSites.append(_cosnstruction)
+		
+func removeConstructionSite(_cosnstruction) -> void:
+	constructionSites.erase(_cosnstruction)
+

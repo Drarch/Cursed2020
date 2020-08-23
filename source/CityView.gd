@@ -39,6 +39,25 @@ func _process(delta: float) -> void:
 	if drag:
 		camera.position = drag_camera + (drag - screen_center.get_local_mouse_position()) * camera.zoom
 
+
+func constructSpecific( cell:Vector2, building_id:int ):
+		var direction := randi() % 4
+		if tilemap.get_cellv(cell + Vector2.DOWN) == 0:
+			direction = 0
+		elif tilemap.get_cellv(cell + Vector2.RIGHT) == 0:
+			direction = 1
+		elif tilemap.get_cellv(cell + Vector2.UP) == 0:
+			direction = 2
+		elif tilemap.get_cellv(cell + Vector2.LEFT) == 0:
+			direction = 3
+		
+		var building := preload("res://buildings/building_base.tscn").instance() as Node2D
+		building.direction = direction
+		building.randView()
+		buildings.add_child(building)
+		
+		constructOnCell(building, cell)
+
 func constructRandom( tile_coordinates = Vector2(0,0) ):
 	var cell = randomTile()
 	if tile_coordinates:
@@ -91,18 +110,20 @@ func construct(building: BuildingBase) -> void:
 	var cell = tilemap.world_to_map(building.position)
 	constructOnCell(building, cell)
 
-func createConstructionSite(tile: Vector2) -> void:
-	var tile_id = tilemap.get_cellv(tile)
-	if tile_id in [2, 1]:
-		var site := preload("res://buildings/building_construction_site.tscn").instance() as Node2D
-		site.position = tilemap.map_to_world(tile) + Vector2(0, 34)
-		buildings.add_child(site)
+func createConstructionSite(cell: Vector2) -> void:
+	var tile_id = tilemap.get_cellv(cell)
+	if tile_id in [1, 2]:
+		if !buildings_data.has(cell):
+			var site := preload("res://buildings/building_construction_site.tscn").instance() as Node2D
+			site.position = tilemap.map_to_world(cell) + Vector2(0, 34)
+			site.constructionType = tile_id
+			site.cell = cell
+			buildings.add_child(site)
 
-		if tile in buildings_data && buildings_data[tile] is ResourceBase:
-			buildings_data[tile].destroy()
+			if cell in buildings_data && buildings_data[cell] is ResourceBase:
+				buildings_data[cell].destroy()
 
-		if tile_id == 2:
-			buildings_data[tile] = site
+			buildings_data[cell] = site
 
 
 
