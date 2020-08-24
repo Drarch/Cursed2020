@@ -85,28 +85,8 @@ func destroy():
 	if get_child_count() == 0:
 		queue_free()
 
-func updateWorkplace() -> void:
-	if canGetJob():
-		Globals.addWorkplace(self)
-	else:
-		Globals.removeWorkplace(self)
 
-
-func canGetJob():
-	return (maxCargo + maxEmployers) > (cargo.size() + employers.size())
-
-func generateWorker():
-	var type: int = getJob()
-
-	var worker = spawnWorker(type)
-
-	if worker:
-		if type == WorkerType.CARGO:
-			hireCargo(worker)
-		else:
-			hireEmploye(worker)
-
-
+		
 func hasCargo() -> bool:
 	return capacity > 0
 
@@ -131,6 +111,27 @@ func subCargo(amount: int = 1) -> bool:
 	return false
 
 
+func updateWorkplace() -> void:
+	if canGetJob():
+		Globals.addWorkplace(self)
+	else:
+		Globals.removeWorkplace(self)
+
+
+func canGetJob():
+	return (maxCargo + maxEmployers) > (cargo.size() + employers.size())
+
+
+func generateWorker() -> bool:
+	var result: bool = false
+	var type: int = getJob()
+	
+	if type == WorkerType.CARGO:
+		result = hireCargo()
+	else:
+		result = hireEmploye()
+
+	return result
 
 
 func getJob() -> int:
@@ -139,16 +140,20 @@ func getJob() -> int:
 	else:
 		return WorkerType.CARGO
 
+	return -1
 
 
-func hireCargo(entity: Node2D) -> bool:
+
+func hireCargo() -> bool:
 	if cargo.size() < maxCargo:
-		cargo.append(entity)
-		entity.workplace = self
-		entity.source = self
-		entity.target = Globals.mainStorage
-		updateWorkplace()
-		return true
+		var entity = spawnWorker(WorkerType.CARGO)
+		if entity:
+			cargo.append(entity)
+			entity.workplace = self
+			entity.source = self
+			entity.target = Globals.mainStorage
+			updateWorkplace()
+			return true
 
 	return false
 
@@ -159,13 +164,15 @@ func fireCargo(entity: Node2D) -> void:
 		updateWorkplace()
 
 
-func hireEmploye(entity: Node2D) -> bool:
+func hireEmploye() -> bool:
 	if employers.size() < maxEmployers:
-		employers.append(entity)
-		entity.workplace = self
-		entity.target = self
-		updateWorkplace()
-		return true
+		var entity = spawnWorker(employerType)
+		if entity:
+			employers.append(entity)
+			entity.workplace = self
+			entity.target = self
+			updateWorkplace()
+			return true
 
 	return false
 
