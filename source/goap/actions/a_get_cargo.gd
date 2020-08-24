@@ -58,7 +58,7 @@ func execute():
 	#  - CONTINUED - Action's execution code has run successfully, but the action is not done yet
 	#  - COMPLETED - Action's execution code has run successfully and the action is done executing
 
-	if storage.subCargo():
+	if storage && storage.subCargo():
 		entity.takeCargo()
 		return COMPLETED
 

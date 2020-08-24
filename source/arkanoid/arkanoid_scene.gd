@@ -39,6 +39,7 @@ func _ready() -> void:
 	$City/UI.queue_free()
 	$City.set_process(false)
 	$City.set_process_input(false)
+	$City.set_process_unhandled_input(false)
 	
 	camera = $City.camera
 	tilemap = $City/Navigation2D/TileMap
