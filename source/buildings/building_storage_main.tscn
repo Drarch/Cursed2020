@@ -9,8 +9,8 @@ maxEmployers = 5
 maxCapacity = 100
 employerType = 3
 
-[node name="Wall" parent="." index="1"]
-frame = 12
+[node name="Wall" parent="components" index="0"]
+frame = 32
 
-[node name="Roof" parent="." index="2"]
-frame = 8
+[node name="Roof" parent="components" index="1"]
+frame = 10

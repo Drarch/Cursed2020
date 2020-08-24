@@ -34,6 +34,13 @@ func _ready() -> void:
 	pass
 
 func increase():
+	if Globals.maxWorkers > Globals.workers:
+		spawnWorker(0)
+	
+	maxEmployers *= 2
+	maxCargo *= 2
+	updateWorkplace()
+		
 	in_construction = false
 	if $components.get_child_count() < 2:
 		return

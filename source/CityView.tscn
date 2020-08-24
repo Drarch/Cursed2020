@@ -43,6 +43,18 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Label4" type="Label" parent="UI"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -18.0
+margin_right = 435.0
+custom_styles/normal = ExtResource( 7 )
+custom_fonts/font = SubResource( 1 )
+text = "All made with Kenney Assets"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Label2" type="Label" parent="UI"]
 margin_top = 20.0
 margin_right = 277.0
@@ -74,10 +86,9 @@ __meta__ = {
 [node name="Workers" type="Label" parent="UI"]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -1.0
+margin_left = -85.0
 margin_top = 19.5998
-margin_right = -1.0
-margin_bottom = 36.5998
+margin_bottom = 56.5998
 grow_horizontal = 0
 custom_styles/normal = ExtResource( 7 )
 custom_fonts/font = SubResource( 2 )
@@ -111,13 +122,10 @@ __meta__ = {
 
 [node name="StorageMain" parent="Buildings" instance=ExtResource( 5 )]
 position = Vector2( 53.6913, 1454.49 )
-maxCargo = 0
 capacity = 5
 
 [node name="Storage" parent="Buildings" instance=ExtResource( 6 )]
 position = Vector2( -659.442, 1751.8 )
-maxCapacity = 10
-capacity = 0
 
 [node name="Timer" type="Timer" parent="."]
 

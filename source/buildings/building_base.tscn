@@ -7,10 +7,10 @@
 [ext_resource path="res://resources/crates.png" type="Texture" id=5]
 [ext_resource path="res://resources/Kenney Future.ttf" type="DynamicFontData" id=6]
 
-[sub_resource type="AudioStreamRandomPitch" id=2]
+[sub_resource type="AudioStreamRandomPitch" id=1]
 audio_stream = ExtResource( 4 )
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=2]
 size = 35
 font_data = ExtResource( 6 )
 
@@ -23,7 +23,7 @@ script = ExtResource( 1 )
 polygon = PoolVector2Array( -49.5391, -2.23561, 0.283989, 22.4657, 49.2662, -1.49982, 0.0737686, -27.5676 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = SubResource( 2 )
+stream = SubResource( 1 )
 
 [node name="components" type="Node2D" parent="."]
 __meta__ = {
@@ -46,7 +46,7 @@ margin_left = 20.9643
 margin_top = -78.5003
 margin_right = 95.9643
 margin_bottom = -33.5003
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "100"
 __meta__ = {
 "_edit_use_anchors_": false
