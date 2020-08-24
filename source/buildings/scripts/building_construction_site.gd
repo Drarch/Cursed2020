@@ -1,4 +1,5 @@
 extends Node2D
+class_name ConstructionSite
 
 var constructionType: int
 var building: BuildingBase
@@ -8,9 +9,13 @@ func _ready():
 	Globals.addConstructionSite(self)
 	
 func build():
-	Globals.cityView.constructSpecific( cell, constructionType )
+	if building:
+		building.increase()
+	else:
+		Globals.cityView.constructSpecific( cell, constructionType )
 	Globals.removeConstructionSite(self)
 	queue_free()
 
 func increase():
 	build()
+

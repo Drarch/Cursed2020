@@ -7,12 +7,12 @@
 [ext_resource path="res://resources/crates.png" type="Texture" id=5]
 [ext_resource path="res://resources/Kenney Future.ttf" type="DynamicFontData" id=6]
 
+[sub_resource type="AudioStreamRandomPitch" id=2]
+audio_stream = ExtResource( 4 )
+
 [sub_resource type="DynamicFont" id=1]
 size = 35
 font_data = ExtResource( 6 )
-
-[sub_resource type="AudioStreamRandomPitch" id=2]
-audio_stream = ExtResource( 4 )
 
 [node name="Building" type="StaticBody2D" groups=[
 "building",
@@ -22,12 +22,20 @@ script = ExtResource( 1 )
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PoolVector2Array( -49.5391, -2.23561, 0.283989, 22.4657, 49.2662, -1.49982, 0.0737686, -27.5676 )
 
-[node name="Wall" type="Sprite" parent="."]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = SubResource( 2 )
+
+[node name="components" type="Node2D" parent="."]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Wall" type="Sprite" parent="components"]
 texture = ExtResource( 3 )
 vframes = 5
 hframes = 9
 
-[node name="Roof" type="Sprite" parent="."]
+[node name="Roof" type="Sprite" parent="components"]
 position = Vector2( 1, -45 )
 texture = ExtResource( 2 )
 vframes = 7
@@ -50,6 +58,3 @@ scale = Vector2( 0.24018, 0.24895 )
 texture = ExtResource( 5 )
 vframes = 2
 hframes = 5
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = SubResource( 2 )

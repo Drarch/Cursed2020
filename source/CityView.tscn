@@ -8,10 +8,10 @@
 [ext_resource path="res://buildings/building_storage.tscn" type="PackedScene" id=6]
 [ext_resource path="res://resources/FlatBoxStyle.tres" type="StyleBox" id=7]
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 3 )
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=2]
 size = 14
 font_data = ExtResource( 3 )
 
@@ -37,7 +37,7 @@ position = Vector2( 512, 300 )
 margin_right = 40.0
 margin_bottom = 14.0
 custom_styles/normal = ExtResource( 7 )
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 1 )
 text = "Use middle mouse to zoom/move around"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -48,7 +48,7 @@ margin_top = 20.0
 margin_right = 277.0
 margin_bottom = 57.0
 custom_styles/normal = ExtResource( 7 )
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 2 )
 text = "Click on empty tiles to build:
 green - lumberyard
 grey - worker house"
@@ -64,7 +64,7 @@ margin_bottom = 18.0
 grow_horizontal = 0
 grow_vertical = 0
 custom_styles/normal = ExtResource( 7 )
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 1 )
 text = "Workers:"
 align = 2
 __meta__ = {
@@ -80,7 +80,7 @@ margin_right = -1.0
 margin_bottom = 36.5998
 grow_horizontal = 0
 custom_styles/normal = ExtResource( 7 )
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 2 )
 text = "Worker
 List"
 align = 2
@@ -101,7 +101,7 @@ custom_styles/hover = ExtResource( 7 )
 custom_styles/pressed = ExtResource( 7 )
 custom_styles/focus = ExtResource( 7 )
 custom_styles/normal = ExtResource( 7 )
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 1 )
 text = "Press to add Action"
 __meta__ = {
 "_edit_use_anchors_": false

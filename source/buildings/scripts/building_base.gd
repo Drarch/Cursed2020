@@ -8,7 +8,7 @@ const WALL_DIRECTIONS := [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, -1, -1
 const ROOF_DIRECTIONS := [-1, -1, -1, -1, 0, 1, 3, 2,0, 1, 3, 2, 0, 1, 3, 2, 0 , 1, 3, 2, 0, 1, 3, 2, 0, 1, 3, 2, 0, 1, 3, 2, 0, 1, 3, 2, 0, 1,3, 2, 0, -1, -1, -1, -1, -1, -1, -1]
 
 
-onready var roof := $Roof as Sprite
+onready var roof := $components/Roof as Sprite
 onready var cargoView: Label = $CargoView
 
 var direction: int
@@ -23,6 +23,7 @@ export(WorkerType) var employerType: int = WorkerType.UNEMPOLYED
 var employers: Array = []
 var cargo: Array = []
 
+var in_construction = false
 
 func _ready() -> void:
 #	if not Globals.has_meta("silent"):
@@ -33,17 +34,18 @@ func _ready() -> void:
 	pass
 
 func increase():
-	if get_child_count() < 2:
+	in_construction = false
+	if $components.get_child_count() < 2:
 		return
 	
-	var sprite := get_child(get_child_count() - 2).duplicate() as Sprite
+	var sprite := $components.get_child($components.get_child_count() - 2).duplicate() as Sprite
 	if not sprite or not roof:
 		return
 	
 	sprite.position.y -= 33
-	add_child(sprite)
+	$components.add_child(sprite)
 	
-	if get_child_count() == 3:
+	if $components.get_child_count() == 3:
 		sprite.texture = preload("res://tileset/tileset_buildings_walls.png")
 		sprite.hframes = 8
 		sprite.vframes = 3
@@ -54,7 +56,8 @@ func increase():
 		sprite.frame = wall
 		sprite.position.y -= 44
 	
-	roof.position.y = sprite.position.y - 44
+	roof.position.y = sprite.position.y
+	$CargoView.rect_position.y = sprite.position.y - 44
 	roof.raise()
 
 func opposite(i: int) -> int:
@@ -64,9 +67,9 @@ func randView() -> void:
 	var frool := randi() % FLOOR_DIRECTIONS.size()
 	while FLOOR_DIRECTIONS[frool] != direction:
 		frool = randi() % FLOOR_DIRECTIONS.size()
-	$Wall.frame = frool
+	$components/Wall.frame = frool
 	
-	roof = $Roof as Sprite
+	roof = $components/Roof as Sprite
 	roof.frame = randi() % ROOF_DIRECTIONS.size()
 	while ROOF_DIRECTIONS[roof.frame] != -1 and ROOF_DIRECTIONS[roof.frame] != direction:
 		roof.frame = randi() % ROOF_DIRECTIONS.size()
