@@ -5,8 +5,15 @@ var car_cargo = [preload("res://sprites/truck.png"),preload("res://sprites/truck
 var car_lumber = [preload("res://sprites/thrash.png")]
 var car_builder = [preload("res://sprites/pickup.png"),preload("res://sprites/ambulance.png"), preload("res://sprites/police.png")]
 
-var maxWorkers = 2000
-var workers = 0
+var maxWorkers: int = 2000
+var workers: int = 0
+
+var workerUnemployed: int = 0
+var workerCargo:int = 0
+var workerLumber:int = 0
+var workerBuilder:int = 0
+
+
 
 var cityView: Node2D
 
