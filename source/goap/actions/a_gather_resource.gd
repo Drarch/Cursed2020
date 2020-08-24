@@ -46,10 +46,11 @@ func get_target_location():
 	# This function should only need to return a Vector2 if it has a precondition "s_atPoint" or similar, 
 	# 	so TYPE_MOVEMENT actions should only be planned to occur before actions that need the agent to be at a 
 	# 	certain location and therefore are able to return a position to move to
-	
-	storage = entity.source
+	if entity.source:
+		storage = entity.source
 
-	return storage.position
+		return storage.position
+	else: return null
 
 func execute():
 	# Manipulate the world through this code

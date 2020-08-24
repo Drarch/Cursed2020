@@ -24,6 +24,12 @@ func _ready() -> void:
 		constructRandom()
 
 func _process(delta: float) -> void:
+	
+	$UI/Workers.text = "Unemployed: " + str(Globals.workerUnemployed)
+	$UI/Workers.text += "\nCargo: " + str(Globals.workerCargo)
+	$UI/Workers.text += "\nLumberJack: " + str(Globals.workerLumber)
+	$UI/Workers.text += "\nBuilder: " + str(Globals.workerBuilder)
+
 	var screen_size := get_viewport().size
 	screen_center.position = screen_size * 0.5
 	
@@ -145,7 +151,7 @@ func constructExistingBuildings() -> void:
 			construct(b)
 
 
-func _input(event: InputEvent) -> void:
+func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == BUTTON_WHEEL_UP:
 			camera.zoom *= 0.9
@@ -208,6 +214,17 @@ func start_arkanoid():
 	root.remove_child(self)
 	arkanoid.add_child(self)
 	root.add_child(arkanoid)
+
+func start_arkanoid_button():
+	Globals.set_meta("silent", true)
+	if buildings_data.size() < 100:
+		for i in 500:
+			constructRandom()
+	Globals.remove_meta("silent")
+	
+	quit = true
+	call_deferred("start_arkanoid")
+
 
 var quit = false
 func _notification(what: int) -> void:

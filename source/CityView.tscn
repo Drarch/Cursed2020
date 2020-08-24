@@ -79,9 +79,10 @@ margin_top = 19.5998
 margin_right = -1.0
 margin_bottom = 36.5998
 grow_horizontal = 0
-grow_vertical = 0
 custom_styles/normal = ExtResource( 7 )
 custom_fonts/font = SubResource( 3 )
+text = "Worker
+List"
 align = 2
 __meta__ = {
 "_edit_use_anchors_": false
@@ -126,5 +127,6 @@ stream = ExtResource( 4 )
 volume_db = -10.0
 autoplay = true
 bus = "Music"
+[connection signal="button_down" from="UI/Button" to="." method="start_arkanoid_button"]
 [connection signal="timeout" from="Timer" to="." method="constructRandom"]
 [connection signal="timeout" from="Timer2" to="." method="grow_tree"]
