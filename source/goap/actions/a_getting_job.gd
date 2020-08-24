@@ -66,7 +66,7 @@ func execute():
 	#  - CONTINUED - Action's execution code has run successfully, but the action is not done yet
 	#  - COMPLETED - Action's execution code has run successfully and the action is done executing
 
-	if workplace.canGetJob():
+	if workplace && workplace.canGetJob():
 		workplace.generateWorker()
 		entity.queue_free()
 		# entity.workplace = workplace
