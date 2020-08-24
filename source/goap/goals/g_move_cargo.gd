@@ -22,17 +22,13 @@ func evaluate():
 	# Go through all symbols and check if they are in the state this goal desires
 	# If one symbol is not fulfilled, this goal may be used in planning
 	# Returns a dictionary of all of goal's symbols in worldstate if any is not satisfied, otherwise null
-	if entity.target:
-		var dic = {
-			"s_target_full": !entity.target.hasSpace(),
-			"s_has_cargo": entity.hasCargo()
-		}
+	
+	var dic = {
+		"s_target_full": null if !entity.target else !entity.target.hasSpace(),
+		"s_has_cargo": entity.hasCargo()
+	}
 
-		return dic
-	else:
-		var dic = {
-			"s_has_cargo": entity.hasCargo()
-		}
+	return dic
 
 
 
