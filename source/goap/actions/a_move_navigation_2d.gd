@@ -73,7 +73,10 @@ func execute():
 		pointEnd = agent.actions_current[1].get_target_location()
 		if pointEnd:
 			_calculatePath(pointEnd)
-			pointEnd = path.back()
+			if path == null:
+				pointEnd = null
+			else:
+				pointEnd = path.back()
 	
 
 	if (pointEnd == null):
