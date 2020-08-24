@@ -45,10 +45,13 @@ __meta__ = {
 
 [node name="StorageMain" parent="Buildings" instance=ExtResource( 5 )]
 position = Vector2( 53.6913, 1454.49 )
+maxCargo = 0
 capacity = 5
 
 [node name="Storage" parent="Buildings" instance=ExtResource( 6 )]
 position = Vector2( -659.442, 1751.8 )
+maxCapacity = 10
+capacity = 0
 
 [node name="Timer" type="Timer" parent="."]
 
