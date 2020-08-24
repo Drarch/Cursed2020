@@ -30,4 +30,10 @@ script = ExtResource( 2 )
 [node name="g_move_cargo" type="Node" parent="GOAP_Agent/Goals" index="1"]
 script = ExtResource( 8 )
 
+[node name="Thoughts" parent="." index="2"]
+margin_left = -127.685
+margin_top = -69.315
+margin_right = 130.315
+margin_bottom = -44.315
+
 [editable path="GOAP_Agent"]
