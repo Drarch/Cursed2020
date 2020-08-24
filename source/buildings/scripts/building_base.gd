@@ -131,7 +131,7 @@ func subCargo(amount: int = 1) -> bool:
 
 
 func getJob() -> int:
-	if employers.size() < maxEmployers:
+	if employers.size() <= cargo.size():
 		return employerType
 	else:
 		return WorkerType.CARGO
