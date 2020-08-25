@@ -286,6 +286,7 @@ process_material = SubResource( 10 )
 texture = ExtResource( 5 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+pause_mode = 2
 stream = ExtResource( 6 )
 volume_db = -10.0
 autoplay = true
@@ -340,6 +341,16 @@ margin_right = 40.0
 margin_bottom = 14.0
 custom_fonts/font = SubResource( 17 )
 text = "SCORE 0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Score2" type="Label" parent="CanvasLayer"]
+margin_top = 35.0
+margin_right = 158.0
+margin_bottom = 70.0
+custom_fonts/font = SubResource( 17 )
+text = "LIFES 100"
 __meta__ = {
 "_edit_use_anchors_": false
 }

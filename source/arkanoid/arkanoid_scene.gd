@@ -8,6 +8,7 @@ onready var particles := $Particles2D
 onready var label := $CanvasLayer/Label
 onready var ap := $CanvasLayer/AnimationPlayer as AnimationPlayer
 onready var scorelabel := $CanvasLayer/Score as Label
+onready var lifelabel := $CanvasLayer/Score2 as Label
 
 onready var mushrooms_node := $CanvasLayer/ColorRect
 onready var creeps_node := $CanvasLayer/ColorRect2
@@ -18,6 +19,7 @@ var tilemap: TileMap
 var city
 var balls: Array
 var score := 0
+var lifes := 100
 
 var mushrooms: float
 var creeps: float
@@ -81,6 +83,14 @@ func _on_Dead_body_entered(body: Node) -> void:
 	body.position = paddle.position + up() * 50
 	if body.started:
 		play_sample("res://arkanoid/call_for_backup.wav")
+		lifes -= 1
+		lifelabel.text = str("LIFES ", lifes)
+		
+		if lifes == 0:
+			get_tree().paused = true
+			var over := preload("res://GameOver.tscn").instance()
+			over.get_node("Control/Label2").text = str("Final Score ", score)
+			add_child(over)
 
 func _on_Ball_hit(ball) -> void:
 	score += 1

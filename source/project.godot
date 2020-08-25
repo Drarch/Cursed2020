@@ -15,11 +15,6 @@ _global_script_classes=[ {
 "path": "res://buildings/scripts/building_base.gd"
 }, {
 "base": "Node2D",
-"class": "ConstructionSite",
-"language": "GDScript",
-"path": "res://buildings/scripts/building_construction_site.gd"
-}, {
-"base": "Node2D",
 "class": "ResourceBase",
 "language": "GDScript",
 "path": "res://buildings/scripts/tree.gd"
@@ -36,7 +31,6 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "BuildingBase": "",
-"ConstructionSite": "",
 "ResourceBase": "",
 "TweenSequence": "",
 "WorkerBase": ""
